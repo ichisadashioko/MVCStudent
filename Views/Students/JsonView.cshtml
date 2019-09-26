@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "JsonView";
+}
+
+@Scripts.Render("~/Scripts/jquery-3.3.1.js")
+@Scripts.Render("~/Scripts/StudentAJAX/main.js")
+
+<h2>JsonView</h2>
+
+<button onclick="StudentAJAX.list()">Click to get JSON</button>
+<div id="console-output" class="col-md-12"></div>
