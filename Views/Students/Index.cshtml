@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@Scripts.Render("~/Scripts/StudentAJAX/main.js")
 
 <h2>Index</h2>
 
@@ -41,7 +40,6 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                <button class="btn-danger" onclick="StudentAJAX.delete(@item.ID)">Delete</button>
             </td>
         </tr>
     }
