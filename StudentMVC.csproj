@@ -132,6 +132,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909260524404_InitialCreate.cs" />
+    <Compile Include="Migrations\201909260524404_InitialCreate.designer.cs">
+      <DependentUpon>201909260524404_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909260540181_RemoveAvatar.cs" />
+    <Compile Include="Migrations\201909260540181_RemoveAvatar.designer.cs">
+      <DependentUpon>201909260540181_RemoveAvatar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -176,7 +185,6 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Students\JsonView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -194,6 +202,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909260524404_InitialCreate.resx">
+      <DependentUpon>201909260524404_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909260540181_RemoveAvatar.resx">
+      <DependentUpon>201909260540181_RemoveAvatar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

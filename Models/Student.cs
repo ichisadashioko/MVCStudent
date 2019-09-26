@@ -27,7 +27,7 @@ namespace StudentMVC.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DoB { get; set; }
 
-        public string AvatarImage { get; set; }
+        //public string AvatarImage { get; set; }
     }
 
     public class StudentDBContext : DbContext

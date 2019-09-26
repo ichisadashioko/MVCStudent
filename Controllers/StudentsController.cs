@@ -30,10 +30,10 @@ namespace StudentMVC.Controllers
         }
 
         //[HttpPost]
-        public JsonResult JsonList()
-        {
-            return Json(db.Students.ToList());
-        }
+        //public JsonResult JsonList()
+        //{
+        //    return Json(db.Students.ToList());
+        //}
 
         // GET: Students/Details/5
         public ActionResult Details(int? id)
