@@ -35,20 +35,20 @@ StudentAJAX.get = function (url) {
 }
 
 
-StudentAJAX.anchors = document.getElementsByTagName('a')
+//StudentAJAX.anchors = document.getElementsByTagName('a')
 
-for (let i = 0; i < StudentAJAX.anchors.length; i++) {
-    StudentAJAX.anchors[i].addEventListener('click', function (e) {
-        if (e.target != e.currentTarget) {
-            e.preventDefault()
-        }
-        e.stopPropagation()
-        var url = e.target.getAttribute('href')
-        StudentAJAX.overlayOn()
-        StudentAJAX.get(url)
+//for (let i = 0; i < StudentAJAX.anchors.length; i++) {
+//    StudentAJAX.anchors[i].addEventListener('click', function (e) {
+//        if (e.target != e.currentTarget) {
+//            e.preventDefault()
+//        }
+//        e.stopPropagation()
+//        var url = e.target.getAttribute('href')
+//        StudentAJAX.overlayOn()
+//        StudentAJAX.get(url)
 
-        // modify the url
-        window.history.pushState(url, null, url)
-        //setTimeout(StudentAJAX.overlayOff(), 5000)
-    }, false)
-}
+//        // modify the url
+//        window.history.pushState(url, null, url)
+//        //setTimeout(StudentAJAX.overlayOff(), 5000)
+//    }, false)
+//}

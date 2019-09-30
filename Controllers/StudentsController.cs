@@ -10,11 +10,13 @@ using StudentMVC.Models;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using System.Text;
+using StudentMVC.HelperServices;
 
 namespace StudentMVC.Controllers
 {
     public class StudentsController : Controller
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private StudentDBContext db = new StudentDBContext();
 
         // GET: Students
@@ -61,9 +63,12 @@ namespace StudentMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,DoB")] Student student)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid &&
+                Validation.validateName(student.FirstName) &&
+                Validation.validateName(student.LastName) &&
+                Validation.validateDoB(student.DoB))
             {
                 db.Students.Add(student);
                 db.SaveChanges();
@@ -93,9 +98,12 @@ namespace StudentMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,DoB")] Student student)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid &&
+                Validation.validateName(student.FirstName) &&
+                Validation.validateName(student.LastName) &&
+                Validation.validateDoB(student.DoB))
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
