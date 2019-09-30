@@ -8,6 +8,11 @@ using Newtonsoft.Json;
 
 namespace StudentMVC.Models
 {
+    public enum Gender
+    {
+        Male,
+        Female,
+    }
     public class Student
     {
         public int ID { get; set; }
@@ -27,11 +32,11 @@ namespace StudentMVC.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DoB { get; set; }
 
+        public Gender Gender { get; set; }
+
+        public string Address { get; set; }
+
         //public string AvatarImage { get; set; }
     }
 
-    public class StudentDBContext : DbContext
-    {
-        public DbSet<Student> Students { get; set; }
-    }
 }
