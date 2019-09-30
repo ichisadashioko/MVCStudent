@@ -20,25 +20,6 @@ var getCreateForm = function () {
         }
     })
 }
-
-Number.prototype.pad = function (size) {
-    var s = String(this);
-    while (s.length < (size || 2)) {
-        s = '0' + s;
-    }
-    return s;
-}
-
-String.prototype.parseDate = function () {
-    var value = new Date(parseInt(this.replace('/Date(', '').replace(')/', ''), 10));
-    return value;
-}
-
-Date.prototype.formatDate = function () {
-    var retval = `${this.getFullYear()}-${this.getMonth().pad(2)}-${this.getDay().pad(2)}`
-    return retval;
-}
-
 var submitCreate = function () {
     var data = {
         FirstName: document.getElementById('FirstName').value,
@@ -63,7 +44,7 @@ var submitCreate = function () {
                 var LastName = student['LastName']
                 var Gender = student['Gender']
                 var ID = student['ID']
-                var DoB = student['DoB'].parseDate().formatDate();
+                var DoB = student['DoB']
 
                 var tr = document.createElement('tr')
                 var rowHtml = `<td>${FirstName}</td><td>${LastName}</td><td>${Gender}</td><td>${DoB}</td><td><a href="/Students/Edit/${ID}">Edit</a> | <a href="/Students/Details/${ID}">Details</a> | <a href="/Students/Delete/${ID}">Delete</a></td>`

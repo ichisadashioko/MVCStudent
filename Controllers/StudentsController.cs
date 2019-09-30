@@ -42,11 +42,11 @@ namespace StudentMVC.Controllers
                     success = true,
                     student = new
                     {
-                        ID= student.ID,
-                        FirstName=student.FirstName,
-                        LastName=student.LastName,
-                        Gender=student.Gender.ToString(),
-                        DoB=student.DoB,
+                        ID = student.ID,
+                        FirstName = student.FirstName,
+                        LastName = student.LastName,
+                        Gender = student.Gender.ToString(),
+                        DoB = student.DoB.ToString("yyyy-MM-dd"),
                     }
                 });
             }
