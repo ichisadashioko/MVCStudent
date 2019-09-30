@@ -9,6 +9,8 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <button onclick="getCreateForm()">Get Create Form</button>
+
 </p>
 <table class="table">
     <tr>
@@ -51,3 +53,7 @@
     }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/StudentAJAX/create.js")
+}

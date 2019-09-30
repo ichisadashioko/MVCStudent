@@ -8,7 +8,7 @@ namespace StudentMVC.HelperServices
 {
     public class Validation
     {
-        public static bool validateDoB(DateTime DoB)
+        public virtual bool validateDoB(DateTime DoB)
         {
             // check year
             // 1753 is the minimum year in SQL Server
@@ -18,7 +18,7 @@ namespace StudentMVC.HelperServices
             }
             return true;
         }
-        public static bool validateName(string name)
+        public virtual bool validateName(string name)
         {
             string pattern = @"^([A-Za-z]+)((\s[A-Za-z]+)+)?$";
             Regex regex = new Regex(pattern);

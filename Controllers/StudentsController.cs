@@ -16,8 +16,8 @@ namespace StudentMVC.Controllers
 {
     public class StudentsController : Controller
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private StudentDBContext db = new StudentDBContext();
+        private Validation Validation = new Validation();
 
         // GET: Students
         public ActionResult Index()
