@@ -40,7 +40,7 @@
                     LastName = "Rusch",
                     DoB = DateTime.Parse("1987-12-11"),
                     Gender = Gender.Male,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/boy.png"
                 },
                 new Student
@@ -49,7 +49,7 @@
                     LastName = "Padgett",
                     DoB = DateTime.Parse("1989-1-11"),
                     Gender = Gender.Female,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/boy-1.png"
                 },
                 new Student
@@ -58,7 +58,7 @@
                     LastName = "Segars",
                     DoB = DateTime.Parse("1973-6-12"),
                     Gender = Gender.Female,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/girl.png"
                 },
                 new Student
@@ -67,7 +67,7 @@
                     LastName = "Fava",
                     DoB = DateTime.Parse("1982-1-11"),
                     Gender = Gender.Male,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/girl-1.png"
                 },
                 new Student
@@ -76,7 +76,7 @@
                     LastName = "Bashir",
                     DoB = DateTime.Parse("1989-9-21"),
                     Gender = Gender.Male,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/man.png"
                 },
                 new Student
@@ -85,7 +85,7 @@
                     LastName = "Graziano",
                     DoB = DateTime.Parse("1989-1-11"),
                     Gender = Gender.Female,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/man-1.png"
                 },
                 new Student
@@ -94,7 +94,7 @@
                     LastName = "Witte",
                     DoB = DateTime.Parse("1989-1-11"),
                     Gender = Gender.Female,
-                    Address = "",
+                    //Address = "",
                     //AvatarImage = "/Content/Images/man-2.png"
                 }
             );

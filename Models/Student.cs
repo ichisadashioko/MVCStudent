@@ -34,7 +34,7 @@ namespace StudentMVC.Models
 
         public Gender Gender { get; set; }
 
-        public string Address { get; set; }
+        //public string Address { get; set; }
 
         //public string AvatarImage { get; set; }
     }

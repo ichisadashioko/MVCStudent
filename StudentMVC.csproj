@@ -149,6 +149,10 @@
     <Compile Include="Migrations\201909300103599_AddCourse.designer.cs">
       <DependentUpon>201909300103599_AddCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909300712058_RemoveAddress.cs" />
+    <Compile Include="Migrations\201909300712058_RemoveAddress.designer.cs">
+      <DependentUpon>201909300712058_RemoveAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
@@ -231,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909300103599_AddCourse.resx">
       <DependentUpon>201909300103599_AddCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909300712058_RemoveAddress.resx">
+      <DependentUpon>201909300712058_RemoveAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
