@@ -11,6 +11,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using System.Text;
 using StudentMVC.HelperServices;
+using System.Diagnostics;
 
 namespace StudentMVC.Controllers
 {
@@ -18,6 +19,39 @@ namespace StudentMVC.Controllers
     {
         private StudentDBContext db = new StudentDBContext();
         private Validation Validation = new Validation();
+
+        public PartialViewResult AjaxCreate()
+        {
+            return PartialView("_PartialCreateForm");
+        }
+
+        [HttpPost]
+        public JsonResult AjaxCreate([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
+        {
+            if (ModelState.IsValid &&
+                Validation.validateName(student.FirstName) &&
+                Validation.validateName(student.LastName) &&
+                Validation.validateDoB(student.DoB))
+            {
+                db.Students.Add(student);
+                db.SaveChanges();
+
+
+                return Json(new
+                {
+                    success = true,
+                    student = new
+                    {
+                        ID= student.ID,
+                        FirstName=student.FirstName,
+                        LastName=student.LastName,
+                        Gender=student.Gender.ToString(),
+                        DoB=student.DoB,
+                    }
+                });
+            }
+            return Json(new { success = false });
+        }
 
         // GET: Students
         public ActionResult Index()
@@ -30,12 +64,6 @@ namespace StudentMVC.Controllers
         {
             return View();
         }
-
-        //[HttpPost]
-        //public JsonResult JsonList()
-        //{
-        //    return Json(db.Students.ToList());
-        //}
 
         // GET: Students/Details/5
         public ActionResult Details(int? id)
@@ -62,7 +90,6 @@ namespace StudentMVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
             if (ModelState.IsValid &&
@@ -97,7 +124,6 @@ namespace StudentMVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
             if (ModelState.IsValid &&
@@ -129,7 +155,6 @@ namespace StudentMVC.Controllers
 
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Student student = db.Students.Find(id);
