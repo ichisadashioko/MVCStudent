@@ -11,7 +11,8 @@ namespace StudentMVC.HelperServices
         public static bool validateDoB(DateTime DoB)
         {
             // check year
-            if (DateTime.Compare(DoB, DateTime.Now) > 0)
+            // 1753 is the minimum year in SQL Server
+            if ((DateTime.Compare(DoB, DateTime.Now) > 0) || (DoB.Year < 1753))
             {
                 return false;
             }
