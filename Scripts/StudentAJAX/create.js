@@ -10,6 +10,19 @@ var loadForm = function (res) {
     out.innerHTML = res;
 }
 
+var removeForm = function () {
+    var out = document.getElementById('create-form');
+    if (out === null) {
+        out = document.createElement('div');
+        out.id = 'create-form';
+
+        var footer = document.getElementsByTagName('footer')[0];
+        footer.parentNode.insertBefore(out, footer);
+    }
+    out.innerHTML = '';
+
+}
+
 var getCreateForm = function () {
     $.get({
         url: '/Students/AjaxCreate',
@@ -40,11 +53,11 @@ var submitCreate = function () {
             console.log(res)
             if (res['success']) {
                 var student = res['student'];
-                var FirstName = student['FirstName']
-                var LastName = student['LastName']
-                var Gender = student['Gender']
-                var ID = student['ID']
-                var DoB = student['DoB']
+                var FirstName = student['FirstName'];
+                var LastName = student['LastName'];
+                var Gender = student['Gender'];
+                var ID = student['ID'];
+                var DoB = student['DoB'];
 
                 var tr = document.createElement('tr')
                 var rowHtml = `<td>${FirstName}</td><td>${LastName}</td><td>${Gender}</td><td>${DoB}</td><td><a href="/Students/Edit/${ID}">Edit</a> | <a href="/Students/Details/${ID}">Details</a> | <a href="/Students/Delete/${ID}">Delete</a></td>`
@@ -53,6 +66,8 @@ var submitCreate = function () {
                 var table = document.getElementById('student-list');
                 var tbody = table.getElementsByTagName('tbody')[0];
                 tbody.appendChild(tr);
+
+                removeForm();
             }
         },
         error: function (err) {

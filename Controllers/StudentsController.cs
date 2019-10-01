@@ -10,8 +10,9 @@ using StudentMVC.Models;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using System.Text;
-using StudentMVC.HelperServices;
+using StudentMVC.Services;
 using System.Diagnostics;
+using System.Web.Mvc.Html;
 
 namespace StudentMVC.Controllers
 {
@@ -28,15 +29,11 @@ namespace StudentMVC.Controllers
         [HttpPost]
         public JsonResult AjaxCreate([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid &&
-                Validation.validateName(student.FirstName) &&
-                Validation.validateName(student.LastName) &&
-                Validation.validateDoB(student.DoB))
+            if (ModelState.IsValid && Validation.validateStudent(student))
             {
                 db.Students.Add(student);
                 db.SaveChanges();
-
-
+                //MvcHtmlString x = DisplayExtensions.DisplayFor < Student, DateTime>()
                 return Json(new
                 {
                     success = true,
@@ -46,7 +43,7 @@ namespace StudentMVC.Controllers
                         FirstName = student.FirstName,
                         LastName = student.LastName,
                         Gender = student.Gender.ToString(),
-                        DoB = student.DoB.ToString("yyyy-MM-dd"),
+                        DoB = student.DoB.ToString("yyyy-MM-dd"), // how to use `@Html.DisplayFor`
                     }
                 });
             }
@@ -92,10 +89,7 @@ namespace StudentMVC.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid &&
-                Validation.validateName(student.FirstName) &&
-                Validation.validateName(student.LastName) &&
-                Validation.validateDoB(student.DoB))
+            if (ModelState.IsValid && Validation.validateStudent(student))
             {
                 db.Students.Add(student);
                 db.SaveChanges();
@@ -126,10 +120,7 @@ namespace StudentMVC.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid &&
-                Validation.validateName(student.FirstName) &&
-                Validation.validateName(student.LastName) &&
-                Validation.validateDoB(student.DoB))
+            if (ModelState.IsValid && Validation.validateStudent(student))
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
