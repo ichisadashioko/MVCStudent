@@ -5,13 +5,15 @@ using System.Text.RegularExpressions;
 using System.Web;
 using StudentMVC.Models;
 using System.Reflection;
-using Autofac;
+using StructureMap;
+using System.Diagnostics;
+using StudentMVC.DependencyResolution;
 
 namespace StudentMVC.Services
 {
     public interface IValidationService
     {
-        bool validateStudent(Student student);
+        bool ValidateStudent(Student student);
     }
 
     public class MyValidation : Validation
@@ -22,129 +24,57 @@ namespace StudentMVC.Services
         }
     }
 
-    public interface IValidationRule
-    {
-        int Order { get; }
-        bool Validate(Student student);
-    }
-
-    public class GenderValidationRule : IValidationRule
-    {
-        public virtual int Order => 100;
-
-        public bool Validate(Student student)
-        {
-            return student.Gender == Gender.Male;
-        }
-    }
-
-    public class AgeValidationRule : IValidationRule
-    {
-        public virtual int Order => 100;
-
-        public bool Validate(Student student)
-        {
-            return (DateTime.Now.Year - student.DoB.Year) >= 18;
-        }
-    }
-
-    public class NameValidationRule : IValidationRule
-    {
-        public virtual int Order => 100;
-
-        public bool Validate(Student student)
-        {
-            string pattern = @"^([A-Za-z]+)((\s[A-Za-z]+)+)?$";
-            Regex regex = new Regex(pattern);
-            var result = regex.Match(student.FullName);
-            //var retval = (result != null) && result.Success;
-            var retval = result.Success;
-            return retval;
-        }
-    }
-
-
     public class Validation : IValidationService
     {
-        public virtual bool validateStudent(Student student)
+        private readonly IEnumerable<IValidationRule> _validators;
+        public Validation()
         {
+            _validators = GetBusinessRules();
+        }
 
-            // scan all classes inheriting IValidationRule
-            // Order by Order
-            // call validate
+        protected virtual IEnumerable<IValidationRule> GetBusinessRules()
+        {
+            /************* StructureMap ************/
+            //var container = new Container(_ =>
+            //{
+            //    _.Scan(x =>
+            //    {
+            //        x.TheCallingAssembly();
+            //        x.AddAllTypesOf<IValidationRule>();
+            //        x.WithDefaultConventions();
+            //    });
+            //});
+            var registry = new DefaultRegistry();
+            var container = new Container(registry);
 
-            var builder = new ContainerBuilder();
 
-            // The CLR won't load referenced assemblies until it is needed,
-            // so this may not be very efficient for OS resources.
-            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            Debug.WriteLine(container.WhatDidIScan());
+            Debug.WriteLine(container.WhatDoIHave());
 
-            foreach (var assembly in assemblies)
+            return container.GetAllInstances<IValidationRule>().OrderBy(x => x.Order);
+        }
+
+        public virtual bool ValidateStudent(Student student)
+        {
+            Debug.WriteLine($"_validators.Count(): {_validators.Count()}");
+            if (_validators == null || !_validators.Any())
             {
-                builder.RegisterAssemblyTypes(assembly)
-                    .AssignableTo<IValidationRule>()
-                    .AsImplementedInterfaces()
-                    .InstancePerLifetimeScope()
-                    .As<IValidationRule>();
+                return true;
             }
 
-            var container = builder.Build();
-
-            IEnumerable<IValidationRule> _validators = container.Resolve<IEnumerable<IValidationRule>>();
             foreach (var validator in _validators)
             {
+                int order = validator.Order;
                 if (!validator.Validate(student))
                 {
                     return false;
                 }
             }
-
-            return true;
-
-
-            //builder.RegisterAssemblyTypes(validationRule)
-            //    .AsImplementedInterfaces<>
-            //AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-            //    .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
-            //    .Select(x => x.Name).ToList();
-
-            //return (
-            //    validateName(student.FirstName) &&
-            //    validateName(student.LastName) &&
-            //    validateDoB(student.DoB) &&
-            //    IsAgeEnough(student) &&
-            //    IsGenderAllowed(student)
-            //);
-        }
-
-        public virtual bool IsAgeEnough(Student student)
-        {
-            return (DateTime.Now.Year - student.DoB.Year) >= 18;
-        }
-        public virtual bool validateDoB(DateTime date)
-        {
-            // check year
-            // 1753 is the minimum year in SQL Server
-            if ((DateTime.Compare(date, DateTime.Now) > 0) || (date.Year < 1753))
-            {
-                return false;
-            }
             return true;
         }
-
         protected virtual bool IsGenderAllowed(Student student)
         {
             return student.Gender == Gender.Male;
-        }
-
-        public virtual bool validateName(string name)
-        {
-            string pattern = @"^([A-Za-z]+)((\s[A-Za-z]+)+)?$";
-            Regex regex = new Regex(pattern);
-            var result = regex.Match(name);
-            //var retval = (result != null) && result.Success;
-            var retval = result.Success;
-            return retval;
         }
     }
 }

@@ -19,7 +19,13 @@ namespace StudentMVC.Controllers
     public class StudentsController : Controller
     {
         private StudentDBContext db = new StudentDBContext();
-        private Validation Validation = new Validation();
+        //private Validation Validation = new Validation();
+        private IValidationService _validationService;
+
+        public StudentsController(IValidationService validationService)
+        {
+            _validationService = validationService;
+        }
 
         public PartialViewResult AjaxCreate()
         {
@@ -29,7 +35,7 @@ namespace StudentMVC.Controllers
         [HttpPost]
         public JsonResult AjaxCreate([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid && Validation.validateStudent(student))
+            if (ModelState.IsValid && _validationService.ValidateStudent(student))
             {
                 db.Students.Add(student);
                 db.SaveChanges();
@@ -89,7 +95,7 @@ namespace StudentMVC.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid && Validation.validateStudent(student))
+            if (ModelState.IsValid && _validationService.ValidateStudent(student))
             {
                 db.Students.Add(student);
                 db.SaveChanges();
@@ -120,7 +126,7 @@ namespace StudentMVC.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,DoB")] Student student)
         {
-            if (ModelState.IsValid && Validation.validateStudent(student))
+            if (ModelState.IsValid && _validationService.ValidateStudent(student))
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
