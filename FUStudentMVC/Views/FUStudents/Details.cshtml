@@ -7,9 +7,17 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Student</h4>
+    <h4>FUStudent</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Credits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Credits)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -43,20 +51,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Credits)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Credits)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.DoB)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DoB)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasCriminalRecord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasCriminalRecord)
+        </dd>
+
     </dl>
 </div>
 <p>

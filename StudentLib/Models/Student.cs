@@ -37,6 +37,7 @@ namespace StudentLib.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime DoB { get; set; }
 
+        [Display(Name = "Has Criminal Record")]
         public virtual bool HasCriminalRecord { get; set; }
     }
 }

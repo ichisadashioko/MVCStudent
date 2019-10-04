@@ -1,17 +1,19 @@
 ﻿@model IEnumerable<FUStudentMVC.Models.FUStudent>
+
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table" id="student-list">
+<table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Credits)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -25,41 +27,43 @@
             @Html.DisplayNameFor(model => model.EntryScore)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Credits)
+            @Html.DisplayNameFor(model => model.DoB)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DoB)
+            @Html.DisplayNameFor(model => model.HasCriminalRecord)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <th>
-                @Html.DisplayFor(modelItem => item.EntryScore)
-            </th>
-            <th>
-                @Html.DisplayFor(modelItem => item.Credits)
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.DoB)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Credits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntryScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasCriminalRecord)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
 
 </table>
