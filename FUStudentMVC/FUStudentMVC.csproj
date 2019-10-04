@@ -221,12 +221,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StudentLib\StudentLib.csproj">
-      <Project>{0341769a-176e-4d6f-b6b4-6cfcb30e9b71}</Project>
-      <Name>StudentLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201910040706141_Initial.resx">
       <DependentUpon>201910040706141_Initial.cs</DependentUpon>
     </EmbeddedResource>
