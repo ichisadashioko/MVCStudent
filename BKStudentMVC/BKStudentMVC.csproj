@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201910040341223_Initial.designer.cs">
       <DependentUpon>201910040341223_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910040915515_AddCriminalRecord.cs" />
+    <Compile Include="Migrations\201910040915515_AddCriminalRecord.designer.cs">
+      <DependentUpon>201910040915515_AddCriminalRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BKStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -302,11 +306,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\BKStudents\Index.cshtml" />
     <Content Include="Views\BKStudents\Create.cshtml" />
     <Content Include="Views\BKStudents\Delete.cshtml" />
     <Content Include="Views\BKStudents\Details.cshtml" />
     <Content Include="Views\BKStudents\Edit.cshtml" />
+    <Content Include="Views\BKStudents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +335,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910040341223_Initial.resx">
       <DependentUpon>201910040341223_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910040915515_AddCriminalRecord.resx">
+      <DependentUpon>201910040915515_AddCriminalRecord.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

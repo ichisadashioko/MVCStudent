@@ -54,7 +54,7 @@ namespace FUStudentMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Credits,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord")] FUStudent fUStudent)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _validationService.ValidateStudent(fUStudent))
             {
                 db.Students.Add(fUStudent);
                 db.SaveChanges();
@@ -86,7 +86,7 @@ namespace FUStudentMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Credits,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord")] FUStudent fUStudent)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _validationService.ValidateStudent(fUStudent))
             {
                 db.Entry(fUStudent).State = EntityState.Modified;
                 db.SaveChanges();
