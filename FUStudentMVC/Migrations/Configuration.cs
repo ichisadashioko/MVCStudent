@@ -28,6 +28,7 @@
                     DoB = DateTime.Parse("1987-12-11"),
                     Gender = Gender.Male,
                     EntryScore = 6.7f,
+                    HasCriminalRecord = true,
                     Credits = 20,
                 },
                 new FUStudent
@@ -37,6 +38,7 @@
                     DoB = DateTime.Parse("1982-1-11"),
                     Gender = Gender.Male,
                     EntryScore = 7.4f,
+                    HasCriminalRecord = false,
                     Credits = 46,
                 },
                 new FUStudent
@@ -46,6 +48,7 @@
                     DoB = DateTime.Parse("1989-9-21"),
                     Gender = Gender.Male,
                     EntryScore = 6.2f,
+                    HasCriminalRecord = true,
                     Credits = 30,
                 },
                 new FUStudent
@@ -55,6 +58,7 @@
                     DoB = DateTime.Parse("1989-1-11"),
                     Gender = Gender.Female,
                     EntryScore = 9.7f,
+                    HasCriminalRecord = false,
                     Credits = 69,
                 },
                 new FUStudent
@@ -64,6 +68,7 @@
                     DoB = DateTime.Parse("1989-1-11"),
                     Gender = Gender.Female,
                     EntryScore = 8.7f,
+                    HasCriminalRecord = true,
                     Credits = 51,
                 }
             );

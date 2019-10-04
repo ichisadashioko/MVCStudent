@@ -157,6 +157,10 @@
     <Compile Include="Migrations\201910040706141_Initial.designer.cs">
       <DependentUpon>201910040706141_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910040904353_NetFramework.cs" />
+    <Compile Include="Migrations\201910040904353_NetFramework.designer.cs">
+      <DependentUpon>201910040904353_NetFramework.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FUStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +228,15 @@
     <EmbeddedResource Include="Migrations\201910040706141_Initial.resx">
       <DependentUpon>201910040706141_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910040904353_NetFramework.resx">
+      <DependentUpon>201910040904353_NetFramework.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StudentLib\StudentLib.csproj">
+      <Project>{b69086e4-f2db-43b8-a404-f542206a3d1a}</Project>
+      <Name>StudentLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
