@@ -16,8 +16,8 @@ namespace StudentLib.Services
 
         public ValidationService()
         {
-            _validators = GetBusinessRules();
             _ignoredRules = GetIgnoredRules();
+            _validators = GetBusinessRules();
         }
 
         protected virtual IEnumerable<IValidationRule> GetBusinessRules()
@@ -29,7 +29,7 @@ namespace StudentLib.Services
 
             if (_ignoredRules != null && _ignoredRules.Any())
             {
-
+                types = types.Except(_ignoredRules);
             }
 
             var validators = new List<IValidationRule>();
@@ -52,7 +52,6 @@ namespace StudentLib.Services
 
             foreach (var validator in _validators)
             {
-                int order = validator.Order;
                 if (!validator.Validate(student))
                 {
                     return false;

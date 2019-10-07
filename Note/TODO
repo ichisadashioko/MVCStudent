@@ -4,9 +4,9 @@ Student Framework
 
 2. 
 	- FU: 
-		- remove `Rule` that only Male is accepted
-       	- Grade at high school > 7.0
-       	- Allow foreign Name, meaning not restricted to only normal alphabet
+		✔ remove `Rule` that only Male is accepted @done(19-10-07 17:54)
+       	✔ Grade at high school > 7.0 @done(19-10-07 17:54)
+       	✔ Allow foreign Name, meaning not restricted to only normal alphabet @done(19-10-07 17:54)
 		- Students must have 1 billion VND in bank account
 
    	- CongAnU: 
