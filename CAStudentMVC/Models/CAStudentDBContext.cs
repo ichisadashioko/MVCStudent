@@ -7,7 +7,7 @@ using StudentLib.Models;
 
 namespace CAStudentMVC.Models
 {
-    public class CAStudentDBContext
+    public class CAStudentDBContext : DbContext
     {
         public DbSet<Student> Students { get; set; }
     }

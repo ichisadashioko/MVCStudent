@@ -18,6 +18,8 @@
 namespace CAStudentMVC.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
+    using StudentLib.Services;
+    using CAStudentMVC.Services;
 	
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
@@ -27,9 +29,11 @@ namespace CAStudentMVC.DependencyResolution {
                 scan => {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
+                    scan.AddAllTypesOf<IValidationRule>();
 					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
+            For<IValidationService>().Use<CAValidationService>();
         }
 
         #endregion
