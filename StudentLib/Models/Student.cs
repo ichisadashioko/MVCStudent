@@ -39,5 +39,7 @@ namespace StudentLib.Models
 
         [Display(Name = "Has Criminal Record")]
         public virtual bool HasCriminalRecord { get; set; }
+
+        public virtual Province Province { get; set; }
     }
 }
