@@ -5,35 +5,39 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
+
 namespace FUStudentMVC.Services
 {
+    public class ForeignNameValidationRule : IValidationRule
+    {
+        public int Order => 4;
+        public bool Validate(Student student)
+        {
+            string pattern = @"^([A-Za-z\,\.\-\pL]+)((\s[A-Za-z]+)+)?$";
+            Regex regex = new Regex(pattern);
+            var result = regex.Match(student.FullName);
+            var retval = result.Success;
+            return retval;
+        }
+    }
     public class EntryScoreValidationRule : IValidationRule
     {
         public int Order => 1;
 
         public bool Validate(Student student)
         {
-            return student.EntryScore > 7.6;
+            return student.EntryScore > 7.0;
         }
     }
     public class FUValidationService : ValidationService
     {
-        protected override IEnumerable<IValidationRule> GetBusinessRules()
+        protected override IEnumerable<Type> GetIgnoredRules()
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IValidationRule)
-                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
-
-            var validators = new List<IValidationRule>();
-            foreach (var type in types)
+            return new List<Type>()
             {
-                var rule = Activator.CreateInstance(type) as IValidationRule;
-                validators.Add(rule);
-                Debug.WriteLine(type.FullName);
-            }
-            validators.OrderBy(x => x.Order);
-            return validators;
+                typeof(GenderValidationRule)
+            };
         }
     }
 }
