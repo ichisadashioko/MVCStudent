@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Services\ForeignNameValidationRuleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -102,6 +103,10 @@
     <ProjectReference Include="..\FUStudentMVC\FUStudentMVC.csproj">
       <Project>{90446399-C4DF-4094-85FB-E54623F1432E}</Project>
       <Name>FUStudentMVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentLib\StudentLib.csproj">
+      <Project>{b69086e4-f2db-43b8-a404-f542206a3d1a}</Project>
+      <Name>StudentLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

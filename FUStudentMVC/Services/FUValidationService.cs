@@ -14,7 +14,7 @@ namespace FUStudentMVC.Services
         public int Order => 4;
         public bool Validate(Student student)
         {
-            string pattern = @"^([A-Za-z\,\.\-\pL]+)((\s[A-Za-z]+)+)?$";
+            string pattern = @"^([A-Za-z\p{L}]+)((\s[A-Za-z\p{L}]+)+)?$";
             Regex regex = new Regex(pattern);
             var result = regex.Match(student.FullName);
             var retval = result.Success;
