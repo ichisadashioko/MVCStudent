@@ -74,7 +74,7 @@ namespace StudentLib.Models
 
     public static class ProvinceExtension
     {
-        private static readonly List<Province> MountainousProvinces = new List<Province>()
+        private static readonly ISet<Province> MountainousProvinces = new HashSet<Province>()
         {
             Province.BacGiang,
             Province.BacKan,
