@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.UndergraduateYears)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
@@ -24,19 +27,25 @@
             @Html.DisplayNameFor(model => model.EntryScore)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UndergraduateYears)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DoB)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HasCriminalRecord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankBalance)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UndergraduateYears)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -50,13 +59,16 @@
             @Html.DisplayFor(modelItem => item.EntryScore)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UndergraduateYears)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DoB)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HasCriminalRecord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Province)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankBalance)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
