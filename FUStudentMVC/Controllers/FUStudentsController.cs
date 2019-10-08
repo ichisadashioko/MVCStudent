@@ -52,7 +52,7 @@ namespace FUStudentMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Credits,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord")] FUStudent fUStudent)
+        public ActionResult Create([Bind(Include = "ID,Credits,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord,Province,BankBalance")] FUStudent fUStudent)
         {
             if (ModelState.IsValid && _validationService.ValidateStudent(fUStudent))
             {
@@ -84,7 +84,7 @@ namespace FUStudentMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Credits,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord")] FUStudent fUStudent)
+        public ActionResult Edit([Bind(Include = "ID,Credits,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord,Province,BankBalance")] FUStudent fUStudent)
         {
             if (ModelState.IsValid && _validationService.ValidateStudent(fUStudent))
             {
