@@ -7,7 +7,7 @@ Student Framework
 		✔ remove `Rule` that only Male is accepted @done(19-10-07 17:54)
        	✔ Grade at high school > 7.0 @done(19-10-07 17:54)
        	✔ Allow foreign Name, meaning not restricted to only normal alphabet @done(19-10-07 17:54)
-		- Students must have 1 billion VND in bank account @started(19-10-08 16:28)
+		✔ Students must have 1 billion VND in bank account @started(19-10-08 16:28) @done(19-10-08 16:44) @lasted(16m20s)
 
    	- CongAnU: 
    		- Add a rule regarding profile
