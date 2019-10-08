@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201910040904353_NetFramework.designer.cs">
       <DependentUpon>201910040904353_NetFramework.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910080905344_ProvinceAndBalance.cs" />
+    <Compile Include="Migrations\201910080905344_ProvinceAndBalance.designer.cs">
+      <DependentUpon>201910080905344_ProvinceAndBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FUStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910040904353_NetFramework.resx">
       <DependentUpon>201910040904353_NetFramework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910080905344_ProvinceAndBalance.resx">
+      <DependentUpon>201910080905344_ProvinceAndBalance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,8 @@
                     Gender = Gender.Male,
                     EntryScore = 6.7f,
                     HasCriminalRecord = true,
+                    Province=Province.AnGiang,
+                    BankBalance=10000m,
                 },
                 new Student
                 {
@@ -37,6 +39,8 @@
                     Gender = Gender.Male,
                     EntryScore = 7.4f,
                     HasCriminalRecord = false,
+                    Province=Province.BinhThuan,
+                    BankBalance=10000m,
                 },
                 new Student
                 {
@@ -46,6 +50,8 @@
                     Gender = Gender.Male,
                     EntryScore = 6.2f,
                     HasCriminalRecord = true,
+                    Province=Province.HauGiang,
+                    BankBalance=10000m,
                 },
                 new Student
                 {
@@ -55,6 +61,8 @@
                     Gender = Gender.Female,
                     EntryScore = 9.7f,
                     HasCriminalRecord = false,
+                    Province=Province.LaoCai,
+                    BankBalance=10000m,
                 },
                 new Student
                 {
@@ -64,6 +72,8 @@
                     Gender = Gender.Female,
                     EntryScore = 8.7f,
                     HasCriminalRecord = true,
+                    Province=Province.QuangNinh,
+                    BankBalance=10000m,
                 }
             );
         }

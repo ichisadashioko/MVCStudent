@@ -162,6 +162,10 @@
     <Compile Include="Migrations\201910070125121_Initial.designer.cs">
       <DependentUpon>201910070125121_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910080900326_ProvinceAndBalance.cs" />
+    <Compile Include="Migrations\201910080900326_ProvinceAndBalance.designer.cs">
+      <DependentUpon>201910080900326_ProvinceAndBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CAStudentDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,6 +238,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910070125121_Initial.resx">
       <DependentUpon>201910070125121_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910080900326_ProvinceAndBalance.resx">
+      <DependentUpon>201910080900326_ProvinceAndBalance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -41,5 +41,8 @@ namespace StudentLib.Models
         public virtual bool HasCriminalRecord { get; set; }
 
         public virtual Province Province { get; set; }
+
+        [Display(Name = "Bank Balance")]
+        public virtual decimal BankBalance { get; set; }
     }
 }

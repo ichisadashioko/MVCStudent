@@ -257,13 +257,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910040341223_Initial.cs" />
-    <Compile Include="Migrations\201910040341223_Initial.designer.cs">
-      <DependentUpon>201910040341223_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910040915515_AddCriminalRecord.cs" />
-    <Compile Include="Migrations\201910040915515_AddCriminalRecord.designer.cs">
-      <DependentUpon>201910040915515_AddCriminalRecord.cs</DependentUpon>
+    <Compile Include="Migrations\201910080902403_ProvinceAndBalance.cs" />
+    <Compile Include="Migrations\201910080902403_ProvinceAndBalance.designer.cs">
+      <DependentUpon>201910080902403_ProvinceAndBalance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BKStudent.cs" />
@@ -333,18 +329,15 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.4\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910040341223_Initial.resx">
-      <DependentUpon>201910040341223_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910040915515_AddCriminalRecord.resx">
-      <DependentUpon>201910040915515_AddCriminalRecord.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\StudentLib\StudentLib.csproj">
       <Project>{b69086e4-f2db-43b8-a404-f542206a3d1a}</Project>
       <Name>StudentLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910080902403_ProvinceAndBalance.resx">
+      <DependentUpon>201910080902403_ProvinceAndBalance.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

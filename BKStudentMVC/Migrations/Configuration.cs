@@ -1,4 +1,4 @@
-﻿namespace BKStudentMVC.Migrations
+namespace BKStudentMVC.Migrations
 {
     using BKStudentMVC.Models;
     using StudentLib.Models;
@@ -30,6 +30,8 @@
                     EntryScore = 6.7f,
                     HasCriminalRecord = false,
                     UndergraduateYears = 4,
+                    Province=Province.AnGiang,
+                    BankBalance=10000m,
                 },
                 new BKStudent
                 {
@@ -40,6 +42,8 @@
                     EntryScore = 7.4f,
                     HasCriminalRecord = true,
                     UndergraduateYears = 4,
+                    Province=Province.BacKan,
+                    BankBalance=2300m,
                 },
                 new BKStudent
                 {
@@ -50,6 +54,8 @@
                     EntryScore = 6.2f,
                     HasCriminalRecord = false,
                     UndergraduateYears = 3,
+                    Province=Province.DakNong,
+                    BankBalance=60m,
                 },
                 new BKStudent
                 {
@@ -60,6 +66,8 @@
                     EntryScore = 9.7f,
                     HasCriminalRecord = false,
                     UndergraduateYears = 6,
+                    Province=Province.BacKan,
+                    BankBalance=20m,
                 },
                 new BKStudent
                 {
@@ -70,6 +78,8 @@
                     EntryScore = 8.7f,
                     HasCriminalRecord = true,
                     UndergraduateYears = 5,
+                    Province=Province.TayNinh,
+                    BankBalance=1500m,
                 }
             );
         }
