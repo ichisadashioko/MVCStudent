@@ -9,14 +9,13 @@ using System.Text.RegularExpressions;
 
 namespace FUStudentMVC.Services
 {
-    public class FUValidationService : ValidationService
+    public class EntryScoreValidationRule : IValidationRule
     {
-        protected override IEnumerable<Type> GetIgnoredRules()
+        public int Order => 1;
+
+        public bool Validate(Student student)
         {
-            return new List<Type>()
-            {
-                typeof(GenderValidationRule)
-            };
+            return student.EntryScore > 7.0;
         }
     }
 }
