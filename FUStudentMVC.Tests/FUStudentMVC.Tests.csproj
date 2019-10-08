@@ -91,7 +91,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Services\ForeignNameValidationRuleTest.cs" />
+    <Compile Include="Services\ValidationRuleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
