@@ -14,7 +14,7 @@ Student Framework
 		- Add a rule that male >= 1.60 and age<23 while female >=1.55 and age < 21 @started(19-10-08 17:12)
 		- Add a rule that grade at high school >8.0	
 		- Students should have 500M in bank account				
-		- Mountainous areas are  added 0.2 to grades at high school.
+		- Mountainous areas are added 0.2 to grades at high school.
 		- If your father serves security service before, 0.2 added to grade at high school	
 
    	- BKUniversity

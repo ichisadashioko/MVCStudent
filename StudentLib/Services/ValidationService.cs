@@ -47,6 +47,7 @@ namespace StudentLib.Services
 
         public virtual bool ValidateStudent(Student student)
         {
+            Debug.WriteLine(student.GetType().FullName);
             //Debug.WriteLine($"_validators.Count(): {_validators.Count()}");
             if (_validators == null || !_validators.Any())
             {
