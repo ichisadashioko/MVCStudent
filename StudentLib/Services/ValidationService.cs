@@ -29,7 +29,10 @@ namespace StudentLib.Services
 
             if (_ignoredRules != null && _ignoredRules.Any())
             {
+                Debug.WriteLine("Removing rules...");
+                Debug.WriteLine($"Before removing: {types.Count()}");
                 types = types.Except(_ignoredRules);
+                Debug.WriteLine($"After removed: {types.Count()}");
             }
 
             var validators = new List<IValidationRule>();
@@ -44,7 +47,7 @@ namespace StudentLib.Services
 
         public virtual bool ValidateStudent(Student student)
         {
-            Debug.WriteLine($"_validators.Count(): {_validators.Count()}");
+            //Debug.WriteLine($"_validators.Count(): {_validators.Count()}");
             if (_validators == null || !_validators.Any())
             {
                 return true;
@@ -54,6 +57,7 @@ namespace StudentLib.Services
             {
                 if (!validator.Validate(student))
                 {
+                    Debug.WriteLine($"Failed validation at {validator.GetType().FullName}");
                     return false;
                 }
             }

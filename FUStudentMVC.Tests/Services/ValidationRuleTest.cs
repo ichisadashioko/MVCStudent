@@ -96,4 +96,45 @@ namespace FUStudentMVC.Tests
             }
         }
     }
+    [TestClass]
+    public class BalanceValidationRuleTest
+    {
+        [TestMethod]
+        public void Validate()
+        {
+            var validator = new BalanceValidationRule();
+            // Arrange
+            (Student student, bool expected)[] pairs =
+            {
+                (new Student()
+                {
+                    BankBalance=1_000_000_000m,
+                }, true),
+                (new Student()
+                {
+                    BankBalance=999_999_999m,
+                }, false),
+                (new Student()
+                {
+                    BankBalance=9_000_000m,
+                }, false),
+                (new Student()
+                {
+                    BankBalance=2_900_230_000m,
+                }, true),
+            };
+
+            // Act
+            foreach (var pair in pairs)
+            {
+                var student = pair.student;
+                var expected = pair.expected;
+                Console.WriteLine(student.EntryScore);
+
+                var actual = validator.Validate(student);
+
+                Assert.AreEqual(expected, actual);
+            }
+        }
+    }
 }

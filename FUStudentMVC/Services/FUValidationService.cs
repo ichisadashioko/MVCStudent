@@ -15,7 +15,8 @@ namespace FUStudentMVC.Services
         {
             return new List<Type>()
             {
-                typeof(GenderValidationRule)
+                typeof(GenderValidationRule),
+                typeof(NameValidationRule),
             };
         }
     }
