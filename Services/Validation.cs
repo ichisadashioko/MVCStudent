@@ -16,42 +16,29 @@ namespace StudentMVC.Services
         bool ValidateStudent(Student student);
     }
 
-    public class MyValidation : Validation
-    {
-        protected override bool IsGenderAllowed(Student student)
-        {
-            return student.Gender == Gender.Female;
-        }
-    }
-
-    public class Validation : IValidationService
+    public class ValidationService : IValidationService
     {
         private readonly IEnumerable<IValidationRule> _validators;
-        public Validation()
+        public ValidationService()
         {
             _validators = GetBusinessRules();
         }
 
         protected virtual IEnumerable<IValidationRule> GetBusinessRules()
         {
-            /************* StructureMap ************/
-            //var container = new Container(_ =>
-            //{
-            //    _.Scan(x =>
-            //    {
-            //        x.TheCallingAssembly();
-            //        x.AddAllTypesOf<IValidationRule>();
-            //        x.WithDefaultConventions();
-            //    });
-            //});
-            var registry = new DefaultRegistry();
-            var container = new Container(registry);
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes())
+                .Where(x => typeof(IValidationRule)
+                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
-
-            Debug.WriteLine(container.WhatDidIScan());
-            Debug.WriteLine(container.WhatDoIHave());
-
-            return container.GetAllInstances<IValidationRule>().OrderBy(x => x.Order);
+            var validators = new List<IValidationRule>();
+            foreach (var type in types)
+            {
+                var rule = Activator.CreateInstance(type) as IValidationRule;
+                validators.Add(rule);
+            }
+            validators.OrderBy(x => x.Order);
+            return validators;
         }
 
         public virtual bool ValidateStudent(Student student)

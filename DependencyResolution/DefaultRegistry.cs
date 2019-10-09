@@ -38,7 +38,7 @@ namespace StudentMVC.DependencyResolution
                     scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
-            For<IValidationService>().Use<Validation>();
+            For<IValidationService>().Use<ValidationService>();
         }
 
         #endregion
