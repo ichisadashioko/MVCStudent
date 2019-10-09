@@ -5,6 +5,7 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
     using StudentLib.Models;
+    using CAStudentMVC.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CAStudentMVC.Models.CAStudentDBContext>
     {
@@ -19,8 +20,8 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-            context.Students.AddOrUpdate(
-                new Student
+            context.CAStudents.AddOrUpdate(
+                new CAStudent
                 {
                     FirstName = "Kennith",
                     LastName = "Rusch",
@@ -30,8 +31,9 @@
                     HasCriminalRecord = true,
                     Province=Province.AnGiang,
                     BankBalance=10000m,
+                    Height=1.56f,
                 },
-                new Student
+                new CAStudent
                 {
                     FirstName = "Wilbert",
                     LastName = "Fava",
@@ -41,8 +43,9 @@
                     HasCriminalRecord = false,
                     Province=Province.BinhThuan,
                     BankBalance=10000m,
+                    Height = 1.75f,
                 },
-                new Student
+                new CAStudent
                 {
                     FirstName = "Marleen",
                     LastName = "Bashir",
@@ -52,8 +55,9 @@
                     HasCriminalRecord = true,
                     Province=Province.HauGiang,
                     BankBalance=10000m,
+                    Height = 1.62f,
                 },
-                new Student
+                new CAStudent
                 {
                     FirstName = "Marybeth",
                     LastName = "Graziano",
@@ -63,8 +67,9 @@
                     HasCriminalRecord = false,
                     Province=Province.LaoCai,
                     BankBalance=10000m,
+                    Height = 1.78f,
                 },
-                new Student
+                new CAStudent
                 {
                     FirstName = "Misti",
                     LastName = "Witte",
@@ -74,6 +79,7 @@
                     HasCriminalRecord = true,
                     Province=Province.QuangNinh,
                     BankBalance=10000m,
+                    Height = 1.61f,
                 }
             );
         }

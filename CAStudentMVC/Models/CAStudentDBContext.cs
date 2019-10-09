@@ -9,6 +9,6 @@ namespace CAStudentMVC.Models
 {
     public class CAStudentDBContext : DbContext
     {
-        public DbSet<Student> Students { get; set; }
+        public DbSet<CAStudent> CAStudents { get; set; }
     }
 }

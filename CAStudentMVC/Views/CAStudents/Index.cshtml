@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StudentLib.Models.Student>
+﻿@model IEnumerable<CAStudentMVC.Models.CAStudent>
 
 @{
     ViewBag.Title = "Index";
@@ -11,6 +11,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -40,6 +43,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>

@@ -148,8 +148,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\CAStudentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -165,6 +165,10 @@
     <Compile Include="Migrations\201910080900326_ProvinceAndBalance.cs" />
     <Compile Include="Migrations\201910080900326_ProvinceAndBalance.designer.cs">
       <DependentUpon>201910080900326_ProvinceAndBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910090303197_CAStudentHeight.cs" />
+    <Compile Include="Migrations\201910090303197_CAStudentHeight.designer.cs">
+      <DependentUpon>201910090303197_CAStudentHeight.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CAStudent.cs" />
@@ -209,11 +213,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
-    <Content Include="Views\Students\Delete.cshtml" />
-    <Content Include="Views\Students\Details.cshtml" />
-    <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\CAStudents\Create.cshtml" />
+    <Content Include="Views\CAStudents\Delete.cshtml" />
+    <Content Include="Views\CAStudents\Details.cshtml" />
+    <Content Include="Views\CAStudents\Edit.cshtml" />
+    <Content Include="Views\CAStudents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -243,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910080900326_ProvinceAndBalance.resx">
       <DependentUpon>201910080900326_ProvinceAndBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910090303197_CAStudentHeight.resx">
+      <DependentUpon>201910090303197_CAStudentHeight.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

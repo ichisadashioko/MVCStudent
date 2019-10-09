@@ -7,116 +7,116 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CAStudentMVC.Models;
-using StudentLib.Models;
 using StudentLib.Services;
 
 namespace CAStudentMVC.Controllers
 {
-    public class StudentsController : Controller
+    public class CAStudentsController : Controller
     {
         private CAStudentDBContext db = new CAStudentDBContext();
         private readonly IValidationService _validationService;
-        public StudentsController(IValidationService validationService)
+        public CAStudentsController(IValidationService validationService)
         {
             _validationService = validationService;
         }
-        // GET: Students
+
+        // GET: CAStudents
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View(db.CAStudents.ToList());
         }
 
-        // GET: Students/Details/5
+        // GET: CAStudents/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            CAStudent cAStudent = db.CAStudents.Find(id);
+            if (cAStudent == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(cAStudent);
         }
 
-        // GET: Students/Create
+        // GET: CAStudents/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Students/Create
+        // POST: CAStudents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord,Province,BankBalance")] Student student)
+        public ActionResult Create([Bind(Include = "ID,Height,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord,Province,BankBalance")] CAStudent cAStudent)
         {
-            if (ModelState.IsValid && _validationService.ValidateStudent(student))
+            if (ModelState.IsValid && _validationService.ValidateStudent(cAStudent))
             {
-                db.Students.Add(student);
+                db.CAStudents.Add(cAStudent);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(student);
+            return View(cAStudent);
         }
 
-        // GET: Students/Edit/5
+        // GET: CAStudents/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            CAStudent cAStudent = db.CAStudents.Find(id);
+            if (cAStudent == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(cAStudent);
         }
 
-        // POST: Students/Edit/5
+        // POST: CAStudents/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord,Province,BankBalance")] Student student)
+        public ActionResult Edit([Bind(Include = "ID,Height,FirstName,LastName,Gender,EntryScore,DoB,HasCriminalRecord,Province,BankBalance")] CAStudent cAStudent)
         {
-            if (ModelState.IsValid && _validationService.ValidateStudent(student))
+            if (ModelState.IsValid && _validationService.ValidateStudent(cAStudent))
             {
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(cAStudent).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(student);
+            return View(cAStudent);
         }
 
-        // GET: Students/Delete/5
+        // GET: CAStudents/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            CAStudent cAStudent = db.CAStudents.Find(id);
+            if (cAStudent == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(cAStudent);
         }
 
-        // POST: Students/Delete/5
+        // POST: CAStudents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
+            CAStudent cAStudent = db.CAStudents.Find(id);
+            db.CAStudents.Remove(cAStudent);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
