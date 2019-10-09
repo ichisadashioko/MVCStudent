@@ -14,7 +14,7 @@ namespace CAStudentMVC.Services
 
         public bool Validate(Student student)
         {
-            if (student.GetType().IsAssignableFrom(typeof(CAStudent)))
+            if (typeof(CAStudent).IsAssignableFrom(student.GetType()))
             {
                 CAStudent caStudent = (CAStudent)student;
                 if (caStudent.Gender == Gender.Male && caStudent.Height >= 1.6 && caStudent.Age < 23)

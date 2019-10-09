@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace StudentLib.Models
 {
@@ -44,5 +45,17 @@ namespace StudentLib.Models
 
         [Display(Name = "Bank Balance")]
         public virtual decimal BankBalance { get; set; }
+
+        public override string ToString()
+        {
+            Type objType = this.GetType();
+            PropertyInfo[] propertyInfoList = objType.GetProperties();
+            StringBuilder result = new StringBuilder();
+            foreach(var propertyInfo in propertyInfoList)
+            {
+                result.Append($"{propertyInfo.Name}={propertyInfo.GetValue(this)}, ");
+            }
+            return result.ToString();
+        }
     }
 }
