@@ -8,7 +8,7 @@ using StudentLib.Models;
 using BKStudentMVC.Services;
 using BKStudentMVC.Models;
 
-namespace BKStudentMVC.Tests
+namespace BKStudentMVC.Tests.Services
 {
     [TestClass]
     public class EntryScoreValidationRuleTest
