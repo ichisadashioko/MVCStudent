@@ -12,10 +12,10 @@ Student Framework
    	- CongAnU: 
    		✔ Add a rule regarding profile @started(19-10-09 10:10) @done(19-10-09 10:19) @lasted(9m45s)
 		✔ Add a rule that male >= 1.60 and age<23 while female >=1.55 and age < 21 @started(19-10-08 17:12) @done(19-10-09 09:43) @lasted(16h31m27s)
-		- Add a rule that grade at high school >8.0 @started(19-10-09 10:10)
+		✔ Add a rule that grade at high school >8.0 @started(19-10-09 10:10) @done(19-10-09 10:49) @lasted(39m1s)
 		- Students should have 500M in bank account				
-		- Mountainous areas are added 0.2 to grades at high school. @started(19-10-09 10:10)
-		- If your father serves security service before, 0.2 added to grade at high school @started(19-10-09 10:10)
+		✔ Mountainous areas are added 0.2 to grades at high school. @started(19-10-09 10:10) @done(19-10-09 10:49) @lasted(39m5s)
+		✔ If your father serves security service before, 0.2 added to grade at high school @started(19-10-09 10:10) @done(19-10-09 10:49) @lasted(39m8s)
 
    	- BKUniversity
 		- Grade at high school > 7.5

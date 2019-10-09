@@ -60,9 +60,69 @@ namespace CAStudentMVC.Tests
             {
                 var student = pair.student;
                 var expected = pair.expected;
-                Console.WriteLine(student);
 
                 var actual = validator.Validate(student);
+                Console.WriteLine(student);
+                Console.WriteLine($"expected: {expected}, actual: {actual}");
+
+                Assert.AreEqual(expected, actual);
+            }
+        }
+    }
+    [TestClass]
+    public class EntryScoreValidationRuleTest
+    {
+        [TestMethod]
+        public void Validate()
+        {
+            var validator = new EntryScoreValidationRule();
+            // Arrange
+            (Student student, bool expected)[] pairs =
+            {
+                (new Student()
+                {
+                }, false),
+                (new CAStudent()
+                {
+                    EntryScore=8.0f,
+                    WasParentInService=false,
+                    Province=Province.HaNoi,
+                }, false),
+                (new CAStudent()
+                {
+                    EntryScore=7.8f,
+                    WasParentInService=true,
+                    Province=Province.BacGiang,
+                }, true),
+                (new CAStudent()
+                {
+                    EntryScore=7.9f,
+                    WasParentInService=true,
+                    Province=Province.HaNoi,
+                }, true),
+                (new CAStudent()
+                {
+                    EntryScore=5.0f,
+                    WasParentInService=true,
+                    Province=Province.CanTho,
+                }, false),
+                (new CAStudent()
+                {
+                    EntryScore=8.1f,
+                    WasParentInService=false,
+                    Province=Province.Foreign,
+                }, true),
+            };
+
+            // Act
+            foreach (var pair in pairs)
+            {
+                var student = pair.student;
+                var expected = pair.expected;
+
+                var actual = validator.Validate(student);
+                Console.WriteLine(student);
+                Console.WriteLine($"expected: {expected}, actual: {actual}");
 
                 Assert.AreEqual(expected, actual);
             }
