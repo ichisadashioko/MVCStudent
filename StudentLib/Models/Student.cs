@@ -44,6 +44,7 @@ namespace StudentLib.Models
         public virtual Province Province { get; set; }
 
         [Display(Name = "Bank Balance")]
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = false)]
         public virtual decimal BankBalance { get; set; }
 
         public virtual float BonusEntryScore
