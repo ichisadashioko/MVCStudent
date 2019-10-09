@@ -25,7 +25,7 @@ Student Framework
 
 3. For all universities, administrators should be able to disable rules or enables rules.
 
-	Developers should be able to  create new rules or remove old ones and admin should be able to manage rules.
+	- Developers should be able to create new rules or remove old ones and admin should be able to manage rules.
 
 4. If possible, code one view using React.
 
