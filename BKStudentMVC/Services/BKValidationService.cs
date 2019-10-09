@@ -18,22 +18,12 @@ namespace BKStudentMVC.Services
     }
     public class BKValidationService : ValidationService
     {
-        protected override IEnumerable<IValidationRule> GetBusinessRules()
+        protected override IEnumerable<Type> GetIgnoredRules()
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IValidationRule)
-                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
-
-            var validators = new List<IValidationRule>();
-            foreach (var type in types)
+            return new List<Type>()
             {
-                var rule = Activator.CreateInstance(type) as IValidationRule;
-                validators.Add(rule);
-                Debug.WriteLine(type.FullName);
-            }
-            validators.OrderBy(x => x.Order);
-            return validators;
+                typeof(GenderValidationRule),
+            };
         }
     }
 }
