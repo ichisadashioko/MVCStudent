@@ -20,7 +20,7 @@ namespace CAStudentMVC.Models
         [Display(Name = "Was Parent in Service")]
         public bool WasParentInService { get; set; }
 
-        public virtual float BonusEntryScore
+        public override float BonusEntryScore
         {
             get
             {
