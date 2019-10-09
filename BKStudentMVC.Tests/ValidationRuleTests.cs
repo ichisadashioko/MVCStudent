@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StudentLib.Models;
 using BKStudentMVC.Services;
+using BKStudentMVC.Models;
 
 namespace BKStudentMVC.Tests
 {
@@ -19,28 +20,34 @@ namespace BKStudentMVC.Tests
             // Arrange
             (Student student, bool expected)[] pairs =
             {
-                (new Student()
+                (new BKStudent()
                 {
+                    Province=Province.HoChiMinh,
                     EntryScore=7.5f,
-                }, false),
+                }, true),
                 (new Student()
                 {
+                    Province=Province.HaNoi,
                     EntryScore=7.6f,
                 }, true),
                 (new Student()
                 {
+                    Province=Province.HaNoi,
                     EntryScore=0,
                 }, false),
                 (new Student()
                 {
+                    Province=Province.HauGiang,
                     EntryScore=9.2f,
                 }, true),
                 (new Student()
                 {
+                    Province=Province.HaTinh,
                     EntryScore=7.4f,
                 }, false),
                 (new Student()
                 {
+                    Province=Province.HaNoi,
                     EntryScore=8f,
                 }, true),
             };
