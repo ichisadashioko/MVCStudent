@@ -20,8 +20,8 @@ Student Framework
    	- BKUniversity
 		✔ Allow both male and female @started(19-10-09 11:14) @done(19-10-09 11:21) @lasted(7m39s)
 		✔ Grade at high school > 7.5 @started(19-10-09 11:13) @done(19-10-09 11:27) @lasted(14m49s)
-		- Students from other provinces than Hanoi is added 0.1 to grade at high school
 		✔ For students from HN, bank account must be larger than 500M, but for those ones from province, only larger than 300M @started(19-10-09 13:24) @done(19-10-09 14:33) @lasted(1h9m20s)
+		✔ Students from other provinces than Hanoi is added 0.1 to grade at high school @started(19-10-09 13:49) @done(19-10-09 14:24) @lasted(35m55s)
 
 3. For all universities, administrators should be able to disable rules or enables rules.
 

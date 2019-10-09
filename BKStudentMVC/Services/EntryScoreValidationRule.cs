@@ -13,7 +13,10 @@ namespace BKStudentMVC.Services
 
         public bool Validate(Student student)
         {
-            return student.EntryScore > 7.5;
+            var totalScore = student.EntryScore + student.BonusEntryScore;
+            Console.WriteLine($"totalScore: {totalScore}");
+            var retval = totalScore > 7.5f;
+            return retval;
         }
     }
 }

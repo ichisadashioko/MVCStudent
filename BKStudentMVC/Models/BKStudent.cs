@@ -12,6 +12,20 @@ namespace BKStudentMVC.Models
     {
         [Display(Name = "Undergraduate Years")]
         public int UndergraduateYears { get; set; }
+
+        public override float BonusEntryScore
+        {
+            get
+            {
+                float retval = 0;
+                if (this.Province != Province.HaNoi)
+                {
+                    retval += 0.1f;
+                }
+                Console.WriteLine($"BonusEntryScore: {retval}");
+                return retval;
+            }
+        }
     }
     public class BKStudentDBContext : DbContext
     {
