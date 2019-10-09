@@ -19,5 +19,22 @@ namespace CAStudentMVC.Models
 
         [Display(Name = "Was Parent in Service")]
         public bool WasParentInService { get; set; }
+
+        public virtual float BonusEntryScore
+        {
+            get
+            {
+                float retval = 0;
+                if (WasParentInService)
+                {
+                    retval += 0.2f;
+                }
+                if (Province.IsMountainous())
+                {
+                    retval += 0.2f;
+                }
+                return retval;
+            }
+        }
     }
 }

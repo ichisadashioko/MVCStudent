@@ -8,23 +8,19 @@ using CAStudentMVC.Models;
 
 namespace CAStudentMVC.Services
 {
-    public class HeightValidationRule : IValidationRule
+    public class HeightValidationRule : CAValidationRule
     {
-        public int Order => 5;
+        public override int Order => 5;
 
-        public bool Validate(Student student)
+        protected override bool ValidateStudent(CAStudent student)
         {
-            if (typeof(CAStudent).IsAssignableFrom(student.GetType()))
+            if (student.Gender == Gender.Male && student.Height >= 1.6 && student.Age < 23)
             {
-                CAStudent caStudent = (CAStudent)student;
-                if (caStudent.Gender == Gender.Male && caStudent.Height >= 1.6 && caStudent.Age < 23)
-                {
-                    return true;
-                }
-                else if (caStudent.Gender == Gender.Female && caStudent.Height >= 1.55 && caStudent.Age < 21)
-                {
-                    return true;
-                }
+                return true;
+            }
+            else if (student.Gender == Gender.Female && student.Height >= 1.55 && student.Age < 21)
+            {
+                return true;
             }
             return false;
         }
