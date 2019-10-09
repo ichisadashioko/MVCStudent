@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using StudentLib.Models;
+using System.ComponentModel.DataAnnotations;
 namespace CAStudentMVC.Models
 {
     public class CAStudent : Student
@@ -15,5 +16,8 @@ namespace CAStudentMVC.Models
             }
         }
         public float Height { get; set; }
+
+        [Display(Name = "Was Parent in Service")]
+        public bool WasParentInService { get; set; }
     }
 }
