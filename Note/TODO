@@ -13,13 +13,13 @@ Student Framework
    		✔ Add a rule regarding profile @started(19-10-09 10:10) @done(19-10-09 10:19) @lasted(9m45s)
 		✔ Add a rule that male >= 1.60 and age<23 while female >=1.55 and age < 21 @started(19-10-08 17:12) @done(19-10-09 09:43) @lasted(16h31m27s)
 		✔ Add a rule that grade at high school >8.0 @started(19-10-09 10:10) @done(19-10-09 10:49) @lasted(39m1s)
-		- Students should have 500M in bank account				
+		- Students should have 500M in bank account @started(19-10-09 10:51)
 		✔ Mountainous areas are added 0.2 to grades at high school. @started(19-10-09 10:10) @done(19-10-09 10:49) @lasted(39m5s)
 		✔ If your father serves security service before, 0.2 added to grade at high school @started(19-10-09 10:10) @done(19-10-09 10:49) @lasted(39m8s)
 
    	- BKUniversity
 		- Grade at high school > 7.5
-		- Allow  both male and female
+		- Allow both male and female
 		- Students from other provinces than Hanoi is added 0.1 to grade at high school
 		- For students from HN, bank account must be larger than 500M, but for those ones from province, only - larger  than 300M
 
