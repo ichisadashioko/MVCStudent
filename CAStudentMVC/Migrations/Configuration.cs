@@ -32,6 +32,7 @@
                     Province=Province.AnGiang,
                     BankBalance=10000m,
                     Height=1.56f,
+                    WasParentInService=false,
                 },
                 new CAStudent
                 {
@@ -44,6 +45,7 @@
                     Province=Province.BinhThuan,
                     BankBalance=10000m,
                     Height = 1.75f,
+                    WasParentInService = false,
                 },
                 new CAStudent
                 {
@@ -56,6 +58,7 @@
                     Province=Province.HauGiang,
                     BankBalance=10000m,
                     Height = 1.62f,
+                    WasParentInService = true,
                 },
                 new CAStudent
                 {
@@ -68,6 +71,7 @@
                     Province=Province.LaoCai,
                     BankBalance=10000m,
                     Height = 1.78f,
+                    WasParentInService = false,
                 },
                 new CAStudent
                 {
@@ -80,6 +84,7 @@
                     Province=Province.QuangNinh,
                     BankBalance=10000m,
                     Height = 1.61f,
+                    WasParentInService = true,
                 }
             );
         }

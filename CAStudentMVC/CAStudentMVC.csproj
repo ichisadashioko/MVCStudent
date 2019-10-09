@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201910090303197_CAStudentHeight.designer.cs">
       <DependentUpon>201910090303197_CAStudentHeight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910090316423_ParentInService.cs" />
+    <Compile Include="Migrations\201910090316423_ParentInService.designer.cs">
+      <DependentUpon>201910090316423_ParentInService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CAStudent.cs" />
     <Compile Include="Models\CAStudentDBContext.cs" />
@@ -250,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910090303197_CAStudentHeight.resx">
       <DependentUpon>201910090303197_CAStudentHeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910090316423_ParentInService.resx">
+      <DependentUpon>201910090316423_ParentInService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,7 @@ Student Framework
 		✔ Students must have 1 billion VND in bank account @started(19-10-08 16:28) @done(19-10-08 16:44) @lasted(16m20s)
 
    	- CongAnU: 
-   		- Add a rule regarding profile @started(19-10-09 10:10)
+   		✔ Add a rule regarding profile @started(19-10-09 10:10) @done(19-10-09 10:19) @lasted(9m45s)
 		✔ Add a rule that male >= 1.60 and age<23 while female >=1.55 and age < 21 @started(19-10-08 17:12) @done(19-10-09 09:43) @lasted(16h31m27s)
 		- Add a rule that grade at high school >8.0 @started(19-10-09 10:10)
 		- Students should have 500M in bank account				
