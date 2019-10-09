@@ -46,12 +46,17 @@ namespace StudentLib.Models
         [Display(Name = "Bank Balance")]
         public virtual decimal BankBalance { get; set; }
 
+        public virtual float BonusEntryScore
+        {
+            get { return 0; }
+        }
+
         public override string ToString()
         {
             Type objType = this.GetType();
             PropertyInfo[] propertyInfoList = objType.GetProperties();
             StringBuilder result = new StringBuilder();
-            foreach(var propertyInfo in propertyInfoList)
+            foreach (var propertyInfo in propertyInfoList)
             {
                 result.Append($"{propertyInfo.Name}={propertyInfo.GetValue(this)}, ");
             }
