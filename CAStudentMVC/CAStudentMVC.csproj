@@ -178,6 +178,7 @@
     <Compile Include="Models\CAStudent.cs" />
     <Compile Include="Models\CAStudentDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BalanceValidationRule.cs" />
     <Compile Include="Services\CAValidationRule.cs" />
     <Compile Include="Services\CAValidationService.cs" />
     <Compile Include="Services\EntryScoreValidationRule.cs" />

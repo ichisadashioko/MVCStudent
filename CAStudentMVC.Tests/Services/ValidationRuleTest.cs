@@ -128,4 +128,50 @@ namespace CAStudentMVC.Tests
             }
         }
     }
+    [TestClass]
+    public class BalanceValidationRuleTest
+    {
+        [TestMethod]
+        public void Validate()
+        {
+            var validator = new BalanceValidationRule();
+            // Arrange
+            (Student student, bool expected)[] pairs =
+            {
+                (new Student()
+                {
+                    BankBalance=500_000_000m
+                }, true),
+                (new Student()
+                {
+                    BankBalance=1_000_000m
+                }, false),
+                (new Student()
+                {
+                    BankBalance=20_000_000m
+                }, false),
+                (new Student()
+                {
+                    BankBalance=400_000_000m
+                }, false),
+                (new Student()
+                {
+                    BankBalance=1_500_000_000m
+                }, true),
+            };
+
+            // Act
+            foreach (var pair in pairs)
+            {
+                var student = pair.student;
+                var expected = pair.expected;
+
+                var actual = validator.Validate(student);
+                Console.WriteLine(student);
+                Console.WriteLine($"expected: {expected}, actual: {actual}");
+
+                Assert.AreEqual(expected, actual);
+            }
+        }
+    }
 }
