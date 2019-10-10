@@ -26,6 +26,13 @@ Student Framework
 3. For all universities, administrators should be able to disable rules or enables rules.
 
 	- Developers should be able to create new rules or remove old ones and admin should be able to manage rules.
+		- Ideas:
+			- `GetBusinessRules()` will returns all the rules are in effect.
+			- `GetIgnoreRules()` will returns all the rules are being ignored.
+			- Add `Description` field to each rules for the administrator
+			- Identify all rules by `FullName` (I don't think administrator should care about the `FullName`
+			- Create a `View` list all the rules with their active status.
+			- Somehow store the admistrator's configuration at runtime and ...
 
 4. If possible, code one view using React.
 
