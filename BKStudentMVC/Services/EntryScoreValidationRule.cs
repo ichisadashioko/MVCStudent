@@ -10,6 +10,7 @@ namespace BKStudentMVC.Services
     public class EntryScoreValidationRule : IValidationRule
     {
         public int Order => 1;
+        public virtual string Description => "Only allow student whose Entry Score is over 7.5.";
 
         public bool Validate(Student student)
         {

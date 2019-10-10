@@ -11,6 +11,7 @@ namespace CAStudentMVC.Services
     public class EntryScoreValidationRule : CAValidationRule
     {
         public override int Order => 9;
+        public override string Description => "Only allow student whose Entry Score is over 8.";
 
         protected override bool ValidateStudent(CAStudent student)
         {

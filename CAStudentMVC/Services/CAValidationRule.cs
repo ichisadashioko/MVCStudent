@@ -11,6 +11,7 @@ namespace CAStudentMVC.Services
     public abstract class CAValidationRule : IValidationRule
     {
         public virtual int Order => throw new NotImplementedException();
+        public virtual string Description => "Only available for CAStudent.";
 
         public virtual bool Validate(Student student)
         {

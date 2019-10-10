@@ -11,12 +11,14 @@ namespace StudentLib.Services
     public interface IValidationRule
     {
         int Order { get; }
+        string Description { get; }
         bool Validate(Student student);
     }
 
     public class GenderValidationRule : IValidationRule
     {
         public virtual int Order => 200;
+        public virtual string Description => "Only allow male students.";
 
         public bool Validate(Student student)
         {
@@ -27,6 +29,7 @@ namespace StudentLib.Services
     public class AgeValidationRule : IValidationRule
     {
         public virtual int Order => 13;
+        public virtual string Description => "Only allow student whose age is over 18.";
 
         public bool Validate(Student student)
         {
@@ -37,6 +40,7 @@ namespace StudentLib.Services
     public class NameValidationRule : IValidationRule
     {
         public virtual int Order => 100;
+        public virtual string Description => "Only allow student whose name only contains alphabet characters.";
 
         public bool Validate(Student student)
         {

@@ -12,6 +12,7 @@ namespace FUStudentMVC.Services
     public class BalanceValidationRule : IValidationRule
     {
         public int Order => 2;
+        public virtual string Description => "Students must have more than 1 billion in their bank account.";
 
         public bool Validate(Student student)
         {

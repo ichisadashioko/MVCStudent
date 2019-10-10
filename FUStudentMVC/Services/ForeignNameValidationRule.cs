@@ -12,6 +12,7 @@ namespace FUStudentMVC.Services
     public class ForeignNameValidationRule : IValidationRule
     {
         public int Order => 4;
+        public virtual string Description => "Allow students to have foreign name characters.";
         public bool Validate(Student student)
         {
             string pattern = @"^([A-Za-z\p{L}]+)((\s[A-Za-z\p{L}]+)+)?$";
