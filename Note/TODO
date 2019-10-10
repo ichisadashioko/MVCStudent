@@ -31,7 +31,7 @@ Student Framework
 			- `GetBusinessRules()` will returns all the rules are in effect.
 			- `GetIgnoreRules()` will returns all the rules are being ignored.
 			- Add `Description` field to each rules for the administrator
-			- Identify all rules by `FullName` (I don't think administrator should care about the `FullName` so I only planned to display the `Description` only)
+			- Identify all rules by `FullName` (I don't think administrator should care about the `FullName` so I only plan to display the `Description` only)
 			- Create a `View` list all the rules with their active status.
 			- Somehow store the administrator's configuration at runtime and ... (not a good idea)
 				- Store the administrator's configuration to a JSON file on server
