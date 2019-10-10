@@ -49,27 +49,56 @@ namespace BKStudentMVC.ViewModels
         public int RulesPerPage { get; set; }
         public int Page { get; set; }
     }
-
 }
 
 namespace BKStudentMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ValidationService _validators;
-        public HomeController(ValidationService validators)
+        private const int RULES_PER_PAGE = 3;
+        private readonly IList<RuleModel> _rules;
+        public HomeController()
         {
-            _validators = validators;
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes())
+                .Where(x => typeof(IValidationRule)
+                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
+
+            _rules = new List<RuleModel>();
+            foreach (var type in types)
+            {
+                var rule = new RuleModel(Activator.CreateInstance(type) as IValidationRule);
+                _rules.Add(rule);
+            }
         }
         public ActionResult Index()
         {
             return View();
         }
 
-        //public ActionResult Rules(int page)
-        //{
-        //    Response.Cache.SetOmitVaryStar(true);
-        //    //var rules = _validators.
-        //}
+        public ActionResult Rules(int page)
+        {
+            Response.Cache.SetOmitVaryStar(true);
+            var rules = _rules.Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE);
+            var hasMore = page * RULES_PER_PAGE < _rules.Count;
+
+            if (ControllerContext.HttpContext.Request.ContentType == "application/json")
+            {
+                return Json(new
+                {
+                    rules = rules,
+                    hasMore = hasMore,
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View(new RuleViewModel
+                {
+                    Rules = _rules.Take(RULES_PER_PAGE * page),
+                    RulesPerPage = RULES_PER_PAGE,
+                    Page = page,
+                });
+            }
+        }
     }
 }
