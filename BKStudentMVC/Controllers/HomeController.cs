@@ -23,7 +23,6 @@ namespace BKStudentMVC.Models
             Active = true;
         }
 
-        [Key]
         public string FullName { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
@@ -39,10 +38,6 @@ namespace BKStudentMVC.Models
             }
             return result.ToString();
         }
-    }
-    public class RuleDBContext : DbContext
-    {
-        public DbSet<RuleModel> Rules { get; set; }
     }
 }
 

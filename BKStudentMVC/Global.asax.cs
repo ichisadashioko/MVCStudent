@@ -16,7 +16,6 @@ namespace BKStudentMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ValidationRuleConfig.Start();
         }
     }
 }
