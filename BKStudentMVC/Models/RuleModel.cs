@@ -48,7 +48,6 @@ namespace BKStudentMVC.Models
         {
             try
             {
-                var ruleType = Type.GetType(FullName, true);
                 if (StartDate == null && EndDate == null && Active)
                 {
                     return true;

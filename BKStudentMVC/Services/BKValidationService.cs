@@ -23,24 +23,21 @@ namespace BKStudentMVC.Services
         {
             var db = new RuleDBContext();
             var ruleModels = db.RuleModels.ToList();
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes())
+                .Where(x => typeof(IValidationRule)
+                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
+
+            var activeRules = types.Where(t => ruleModels.Any(r => r.FullName == t.FullName && r.InEffect()));
 
             var validators = new List<IValidationRule>();
-            foreach (var ruleModel in ruleModels)
+            foreach (var type in types)
             {
-                Debug.WriteLine($"[BKValidationService.GetBusinessRules] Trying to load {ruleModel.FullName}");
-                if (ruleModel.InEffect())
-                {
-                    var type = Type.GetType(ruleModel.FullName);
-                    Debug.WriteLine($"[BKValidationService.GetBusinessRules] Got type {type}");
-                    //var validator = Activator.CreateInstance(type) as IValidationRule;
-                    //validators.Add(validator);
-                }
+                var rule = Activator.CreateInstance(type) as IValidationRule;
+                validators.Add(rule);
             }
+            validators.OrderBy(x => x.Order);
             return validators;
-
-            //return ruleModels.Where(x => x.InEffect())
-            //.Select(x => Activator.CreateInstance(Type.GetType(x.FullName)) as IValidationRule);
-            //return base.GetBusinessRules();
         }
     }
 }
