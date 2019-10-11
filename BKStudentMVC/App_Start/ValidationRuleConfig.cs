@@ -27,17 +27,16 @@ namespace BKStudentMVC
                 var rule = Activator.CreateInstance(type) as IValidationRule;
 
                 var ruleModel = new RuleModel(rule);
-                Debug.WriteLine(ruleModel);
+                //Debug.WriteLine($"[ValidationRuleConfig.Start] Found {ruleModel}");
 
                 var db = new RuleDBContext();
                 if (db.RuleModels.Find(ruleModel.FullName) == null)
                 {
                     db.RuleModels.Add(ruleModel);
                     db.SaveChanges();
-                    Debug.WriteLine($"Adding {ruleModel}");
+                    Debug.WriteLine($"[ValidationRuleConfig.Start] Adding {ruleModel}");
                 }
             }
-
         }
     }
 }
