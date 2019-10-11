@@ -18,6 +18,7 @@
 namespace BKStudentMVC.DependencyResolution
 {
     using BKStudentMVC.Services;
+    using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
     using StudentLib.Services;
