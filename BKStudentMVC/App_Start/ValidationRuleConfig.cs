@@ -10,7 +10,6 @@ namespace BKStudentMVC
     using System.Configuration;
     using System.Data;
     using System.Data.SqlClient;
-    using System.Data.SqlServerCe;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
@@ -82,26 +81,26 @@ namespace BKStudentMVC
             //conn.Open();
             //conn.Close();
 
-            IEnumerable<Type> ruleTypes = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
+            //IEnumerable<Type> ruleTypes = AppDomain.CurrentDomain.GetAssemblies()
+            //    .SelectMany(x => x.GetTypes())
+            //    .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
-            //RuleDBContext ruleDB = new RuleDBContext(connectionString);
-            RuleDBContext ruleDB = new RuleDBContext();
-            foreach (var type in ruleTypes)
-            {
-                var rule = Activator.CreateInstance(type) as IValidationRule;
-                RuleModel ruleModel = new RuleModel(rule);
-                //Console.WriteLine(ruleModel);
-                Debug.WriteLine(ruleModel);
-                //var cmd = conn.CreateCommand();
-                //cmd.CommandText = 
+            ////RuleDBContext ruleDB = new RuleDBContext(connectionString);
+            ////RuleDBContext ruleDB = new RuleDBContext();
+            //foreach (var type in ruleTypes)
+            //{
+            //    var rule = Activator.CreateInstance(type) as IValidationRule;
+            //    RuleModel ruleModel = new RuleModel(rule);
+            //    //Console.WriteLine(ruleModel);
+            //    Debug.WriteLine(ruleModel);
+            //    //var cmd = conn.CreateCommand();
+            //    //cmd.CommandText = 
 
-                //if (ruleDB.Rules.Find(ruleModel) == null)
-                //{
-                //    ruleDB.Rules.Add(ruleModel);
-                //}
-            }
+            //    //if (ruleDB.Rules.Find(ruleModel) == null)
+            //    //{
+            //    //    ruleDB.Rules.Add(ruleModel);
+            //    //}
+            //}
 
         }
         public static void End()
