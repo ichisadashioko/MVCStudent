@@ -11,40 +11,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text;
 
-namespace BKStudentMVC.Models
-{
-    public class RuleModel
-    {
-        public RuleModel() { }
-        public RuleModel(IValidationRule rule)
-        {
-            FullName = rule.GetType().FullName;
-            Description = rule.Description;
-            Active = true;
-        }
-
-        [Key]
-        public string FullName { get; set; }
-        public string Description { get; set; }
-        public bool Active { get; set; }
-
-        public override string ToString()
-        {
-            Type objType = this.GetType();
-            PropertyInfo[] propertyInfoList = objType.GetProperties();
-            StringBuilder result = new StringBuilder();
-            foreach (var propertyInfo in propertyInfoList)
-            {
-                result.Append($"{propertyInfo.Name}={propertyInfo.GetValue(this)}, ");
-            }
-            return result.ToString();
-        }
-    }
-    public class RuleDBContext : DbContext
-    {
-        public DbSet<RuleModel> Rules { get; set; }
-    }
-}
 
 namespace BKStudentMVC.ViewModels
 {
@@ -61,20 +27,10 @@ namespace BKStudentMVC.Controllers
     public class HomeController : Controller
     {
         private const int RULES_PER_PAGE = 3;
-        private readonly IList<RuleModel> _rules;
+        private readonly RuleDBContext ruleDB;
         public HomeController()
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IValidationRule)
-                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
-
-            _rules = new List<RuleModel>();
-            foreach (var type in types)
-            {
-                var rule = new RuleModel(Activator.CreateInstance(type) as IValidationRule);
-                _rules.Add(rule);
-            }
+            ruleDB = new RuleDBContext();
         }
         public ActionResult Index()
         {
@@ -84,8 +40,8 @@ namespace BKStudentMVC.Controllers
         public ActionResult Rules(int page)
         {
             Response.Cache.SetOmitVaryStar(true);
-            var rules = _rules.Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE);
-            var hasMore = page * RULES_PER_PAGE < _rules.Count;
+            var rules = ruleDB.RuleModels.Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE);
+            var hasMore = page * RULES_PER_PAGE < ruleDB.RuleModels.Count();
 
             if (ControllerContext.HttpContext.Request.ContentType == "application/json")
             {
@@ -99,7 +55,7 @@ namespace BKStudentMVC.Controllers
             {
                 return View(new RuleViewModel
                 {
-                    Rules = _rules.Take(RULES_PER_PAGE * page),
+                    Rules = ruleDB.RuleModels.Take(RULES_PER_PAGE * page),
                     RulesPerPage = RULES_PER_PAGE,
                     Page = page,
                 });

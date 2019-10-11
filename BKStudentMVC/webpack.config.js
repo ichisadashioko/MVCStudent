@@ -24,3 +24,24 @@ module.exports = {
     devtool: "inline-source-map",
     plugins: [new WebpackNotifierPlugin(), new BrowserSyncPlugin()]
 };
+
+module.exports = {
+    entry: "./Scripts/Home/react/RuleManagement.tsx",
+    output: {
+        path: path.resolve(__dirname, "./Scripts/dist/Home/react"),
+        filename: "rule_index.js"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            }
+        ]
+    },
+    devtool: "inline-source-map",
+    plugins: [new WebpackNotifierPlugin(), new BrowserSyncPlugin()]
+}

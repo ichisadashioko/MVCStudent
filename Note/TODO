@@ -37,6 +37,11 @@ Student Framework
 				- Store the administrator's configuration to a JSON file on server
 				- It will be loaded if exist
 
+		- Store `RuleModel` in database
+		- `GetBusinessRules()` will access database to get `RuleModel`
+		- Check whether `RuleModel` is in effect
+
+
 4. If possible, code one view using React.
 
 Note: code as you do, and review your code, and refactor
