@@ -21,16 +21,25 @@ namespace BKStudentMVC.Services
 
         protected override IEnumerable<IValidationRule> GetBusinessRules()
         {
+            // Scan all assemblies
+            // Get all class `Type`
+            // Check whether the `Type` is active or not
+            // If yes then add the `Type` instance to return
+
+            // Move `ruleModels` to an interface
             var db = new RuleDBEntities();
             var ruleModels = db.RuleModels.ToList();
+
+            // Make DI container get `types`
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
                 .Where(x => typeof(IValidationRule)
                 .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
+            // check rule status (active or not) using interface
             var activeRules = types.Where(t => ruleModels.Any(r => (r.FullName.Trim().Equals(t.FullName)) && r.InEffect));
 
-
+            // Use DI container to create instance
             var validators = new List<IValidationRule>();
             foreach (var type in activeRules)
             {
@@ -42,4 +51,6 @@ namespace BKStudentMVC.Services
             return validators;
         }
     }
+
+
 }

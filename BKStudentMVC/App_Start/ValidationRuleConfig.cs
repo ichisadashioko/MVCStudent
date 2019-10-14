@@ -22,6 +22,7 @@ namespace BKStudentMVC
                 .SelectMany(x => x.GetTypes())
                 .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
+            var db = new RuleDBEntities();
             foreach (var type in ruleTypes)
             {
                 var rule = Activator.CreateInstance(type) as IValidationRule;
@@ -29,7 +30,6 @@ namespace BKStudentMVC
                 var ruleModel = new RuleModel(rule);
                 //Debug.WriteLine($"[ValidationRuleConfig.Start] Found {ruleModel}");
 
-                var db = new RuleDBEntities();
                 RuleModel _ruleModel = db.RuleModels.SingleOrDefault(x => x.FullName == ruleModel.FullName);
                 if (_ruleModel == null)
                 {
@@ -41,6 +41,7 @@ namespace BKStudentMVC
                     db.SaveChanges();
                 }
             }
+            db.Dispose();
         }
     }
 }

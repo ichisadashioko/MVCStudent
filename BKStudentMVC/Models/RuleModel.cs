@@ -24,7 +24,7 @@ namespace BKStudentMVC.Models
         public bool Active { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
-        public virtual bool InEffect { get { return IsInEffect(); }; }
+        public virtual bool InEffect { get { return IsInEffect(); } }
 
         public RuleModel() { }
         public RuleModel(IValidationRule rule)
@@ -45,39 +45,41 @@ namespace BKStudentMVC.Models
             return result.ToString();
         }
 
+        bool DuringActiveTime
+        {
+            get
+            {
+                // if `StartDate` is `null` and `EndDate` is `null` then return `true`
+                // if `StartDate` is > `Now` then return `false`
+                // if `StartDate` is `null` but `EndDate` < `Now` then return `false`
+
+                //|       | null  | > Now | < Now |
+                //|-------|-------|-------|-------|
+                //| null  | TRUE  | FALSE | TRUE  |
+                //| > Now | TRUE  | FALSE | TRUE  |
+                //| < Now | FALSE | FALSE | FALSE |
+
+                //|       | > Now | < Now |
+                //|-------|-------|-------|
+                //| > Now | FALSE | TRUE  |
+                //| < Now | FALSE | FALSE |
+
+                //|       | null  | > Now | < Now |
+                //|-------|-------|-------|-------|
+                //| null  | TRUE  | FALSE | TRUE  |
+                //| > Now | TRUE  |       |       |
+                //| < Now | FALSE |       |       |
+
+                // Comparing with null of type `DateTime?` always produces `false` (.NET behaviour)
+
+                var now = DateTime.Now;
+                return StartDate > now || EndDate < now;
+            }
+        }
+
         private bool IsInEffect()
         {
-            try
-            {
-                if (StartDate == null && EndDate == null && Active)
-                {
-                    return true;
-                }
-                if (StartDate != null)
-                {
-                    if (StartDate > DateTime.Now)
-                    {
-                        return false;
-                    }
-
-                    if (StartDate <= DateTime.Now && Active)
-                    {
-                        if (EndDate == null)
-                        {
-                            return true;
-                        }
-                        if (EndDate > DateTime.Now)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.StackTrace);
-            }
-            return false;
+            return Active && DuringActiveTime;
         }
     }
 }
