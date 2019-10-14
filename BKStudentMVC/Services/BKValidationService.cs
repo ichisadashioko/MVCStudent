@@ -9,8 +9,30 @@ using BKStudentMVC.Models;
 
 namespace BKStudentMVC.Services
 {
+    public interface IRuleDataService
+    {
+        IEnumerable<RuleModel> GetRules();
+    }
+    public class RuleDataService : IRuleDataService
+    {
+        private readonly RuleDBEntities _db;
+        public RuleDataService()
+        {
+            _db = new RuleDBEntities();
+        }
+
+        public IEnumerable<RuleModel> GetRules()
+        {
+            return _db.RuleModels.ToList();
+        }
+    }
     public class BKValidationService : ValidationService
     {
+        private readonly IRuleDataService _dataService;
+        public BKValidationService(IRuleDataService dataService) : base()
+        {
+            _dataService = dataService;
+        }
         protected override IEnumerable<Type> GetIgnoredRules()
         {
             return new List<Type>()
@@ -19,6 +41,7 @@ namespace BKStudentMVC.Services
             };
         }
 
+
         protected override IEnumerable<IValidationRule> GetBusinessRules()
         {
             // Scan all assemblies
@@ -26,9 +49,7 @@ namespace BKStudentMVC.Services
             // Check whether the `Type` is active or not
             // If yes then add the `Type` instance to return
 
-            // Move `ruleModels` to an interface
-            var db = new RuleDBEntities();
-            var ruleModels = db.RuleModels.ToList();
+            var ruleModels = _dataService.GetRules();
 
             // Make DI container get `types`
             var types = AppDomain.CurrentDomain.GetAssemblies()

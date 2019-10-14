@@ -38,6 +38,7 @@ namespace BKStudentMVC.DependencyResolution
                     scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
+            For<IRuleDataService>().Use<RuleDataService>();
             For<IValidationService>().Use<BKValidationService>();
         }
 
