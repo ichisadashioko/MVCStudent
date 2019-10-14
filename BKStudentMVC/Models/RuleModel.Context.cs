@@ -13,10 +13,10 @@ namespace BKStudentMVC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RuleDBContext : DbContext
+    public class RuleDBEntities : System.Data.Entity.DbContext
     {
-        public RuleDBContext()
-            : base("name=RuleDBContext")
+        public RuleDBEntities()
+            : base("name=RuleDBEntities")
         {
         }
     
@@ -25,6 +25,7 @@ namespace BKStudentMVC.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<RuleModel> RuleModels { get; set; }
+        public virtual System.Data.Entity.DbSet<RuleModel> RuleModels { get; set; }
+
     }
 }

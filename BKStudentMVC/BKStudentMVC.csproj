@@ -88,6 +88,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -146,6 +147,7 @@
     <Compile Include="App_Start\ValidationRuleConfig.cs" />
     <Compile Include="Controllers\BKStudentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RuleModelsController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -218,13 +220,7 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="package.json" />
     <Content Include=".babelrc" />
-    <EntityDeploy Include="Models\RuleModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RuleModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\RuleModel.edmx.diagram">
-      <DependentUpon>RuleModel.edmx</DependentUpon>
-    </Content>
+    <Content Include="webpack.config.js" />
     <Content Include="Scripts\Home\react\index.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -234,6 +230,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\RuleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RuleModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\RuleModel.edmx.diagram">
+      <DependentUpon>RuleModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -289,6 +292,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\RuleModels\Create.cshtml" />
+    <Content Include="Views\RuleModels\Delete.cshtml" />
+    <Content Include="Views\RuleModels\Details.cshtml" />
+    <Content Include="Views\RuleModels\Edit.cshtml" />
+    <Content Include="Views\RuleModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -316,6 +324,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="React\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

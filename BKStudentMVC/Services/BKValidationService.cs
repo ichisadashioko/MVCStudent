@@ -21,18 +21,20 @@ namespace BKStudentMVC.Services
 
         protected override IEnumerable<IValidationRule> GetBusinessRules()
         {
-            var db = new RuleDBContext();
+            var db = new RuleDBEntities();
             var ruleModels = db.RuleModels.ToList();
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
                 .Where(x => typeof(IValidationRule)
                 .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
-            var activeRules = types.Where(t => ruleModels.Any(r => r.FullName == t.FullName && r.InEffect()));
+            var activeRules = types.Where(t => ruleModels.Any(r => (r.FullName.Trim().Equals(t.FullName)) && r.InEffect));
+
 
             var validators = new List<IValidationRule>();
-            foreach (var type in types)
+            foreach (var type in activeRules)
             {
+                Debug.WriteLine($"[BKStudentMVC.Services.BKValidationService.GetBusinessRules] Adding {type.FullName} to rule list.");
                 var rule = Activator.CreateInstance(type) as IValidationRule;
                 validators.Add(rule);
             }

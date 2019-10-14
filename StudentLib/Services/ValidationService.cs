@@ -56,6 +56,7 @@ namespace StudentLib.Services
 
             foreach (var validator in _validators)
             {
+                Debug.WriteLine($"Using {validator.GetType().FullName} to validate");
                 if (!validator.Validate(student))
                 {
                     Debug.WriteLine($"Failed validation at {validator.GetType().FullName}");

@@ -9,16 +9,23 @@
 
 namespace BKStudentMVC.Models
 {
+    using StudentLib.Services;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Reflection;
     using System.Text;
-    using StudentLib.Services;
-    using System.Linq;
-    using System.Diagnostics;
 
     public partial class RuleModel
     {
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string Description { get; set; }
+        public bool Active { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public virtual bool InEffect { get { return IsInEffect(); }; }
+
         public RuleModel() { }
         public RuleModel(IValidationRule rule)
         {
@@ -26,12 +33,6 @@ namespace BKStudentMVC.Models
             Description = rule.Description;
             Active = true;
         }
-        public string FullName { get; set; }
-        public string Description { get; set; }
-        public bool Active { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-
         public override string ToString()
         {
             Type objType = this.GetType();
@@ -44,7 +45,7 @@ namespace BKStudentMVC.Models
             return result.ToString();
         }
 
-        public virtual bool InEffect()
+        private bool IsInEffect()
         {
             try
             {
@@ -79,5 +80,4 @@ namespace BKStudentMVC.Models
             return false;
         }
     }
-
 }

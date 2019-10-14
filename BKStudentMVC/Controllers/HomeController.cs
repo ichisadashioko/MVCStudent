@@ -27,10 +27,10 @@ namespace BKStudentMVC.Controllers
     public class HomeController : Controller
     {
         private const int RULES_PER_PAGE = 3;
-        private readonly RuleDBContext ruleDB;
+        private readonly RuleDBEntities ruleDB;
         public HomeController()
         {
-            ruleDB = new RuleDBContext();
+            ruleDB = new RuleDBEntities();
         }
         public ActionResult Index()
         {
@@ -40,7 +40,7 @@ namespace BKStudentMVC.Controllers
         public ActionResult Rules(int page)
         {
             Response.Cache.SetOmitVaryStar(true);
-            var rules = ruleDB.RuleModels.Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE);
+            var rules = ruleDB.RuleModels.OrderBy(x => x.FullName).Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE).ToList();
             var hasMore = page * RULES_PER_PAGE < ruleDB.RuleModels.Count();
 
             if (ControllerContext.HttpContext.Request.ContentType == "application/json")
@@ -61,5 +61,10 @@ namespace BKStudentMVC.Controllers
                 });
             }
         }
+        //public ActionResult ChangeRuleState(string fullName)
+        //{
+        //    string decodeFullName = HtmlHelper.
+        //    ruleDB.RuleModels.Find
+        //}
     }
 }
