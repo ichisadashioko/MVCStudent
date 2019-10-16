@@ -50,6 +50,8 @@ namespace BKStudentMVC.Services
             // Check whether the `Type` is active or not
             // If yes then add the `Type` instance to return
 
+            // I initialize `DataService` here because `RuleModel` is not part of `StudentLib`
+            // and I can't inject `ValidationService` with `IRuleDataService` at the same time.
             if (_dataService == null) { InitializeDataService(); }
             var ruleModels = _dataService.GetRules();
 

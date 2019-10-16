@@ -10,7 +10,7 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text;
-
+using StudentLib.Models;
 
 namespace BKStudentMVC.ViewModels
 {

@@ -164,7 +164,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BKStudent.cs" />
-    <Compile Include="Models\RuleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BKBalanceValidationRule.cs" />
     <Compile Include="Services\BKValidationService.cs" />

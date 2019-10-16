@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BKStudentMVC.Models;
+using StudentLib.Models;
 
 namespace BKStudentMVC.Controllers
 {

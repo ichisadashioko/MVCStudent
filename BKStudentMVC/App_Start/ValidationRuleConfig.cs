@@ -4,6 +4,7 @@
 namespace BKStudentMVC
 {
     using BKStudentMVC.Models;
+    using StudentLib.Models;
     using StudentLib.Services;
     using System;
     using System.Collections.Generic;
@@ -35,7 +36,8 @@ namespace BKStudentMVC
                 {
                     Debug.WriteLine($"[ValidationRuleConfig.Start] Adding {ruleModel}");
                     //db.RuleModels.Add(ruleModel);
-                    //db.Database.ExecuteSqlCommand($"INSERT INTO RuleModels(FullName, Description, Active, StartDate, EndDate) VALUES ({ruleModel.FullName}, {ruleModel.Description}, {ruleModel.Active}, {ruleModel.StartDate}, {ruleModel.EndDate})");
+
+                    //  I insert manually because `Id` may be set to 0 when using `DbSet.Add()`
                     db.Database.ExecuteSqlCommand("INSERT INTO RuleModels(FullName, Description, Active, StartDate, EndDate) VALUES ({0}, {1}, {2}, {3}, {4})", ruleModel.FullName, ruleModel.Description, ruleModel.Active, ruleModel.StartDate, ruleModel.EndDate);
                     //SqlCommand cmd = new SqlCommand()
                     db.SaveChanges();

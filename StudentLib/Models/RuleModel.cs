@@ -1,12 +1,9 @@
-using StudentLib.Services;
+﻿using StudentLib.Services;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
-namespace BKStudentMVC.Models
+namespace StudentLib.Models
 {
 
     public partial class RuleModel
