@@ -11,8 +11,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "BKStudentMVC.Models.BKDBContext";
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(BKStudentMVC.Models.BKDBContext context)

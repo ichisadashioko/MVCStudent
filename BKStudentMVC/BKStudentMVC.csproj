@@ -145,10 +145,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\ValidationRuleConfig.cs" />
-    <Compile Include="Migrations\201910160345473_InitialCreate.cs" />
-    <Compile Include="Migrations\201910160345473_InitialCreate.designer.cs">
-      <DependentUpon>201910160345473_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BKDBContext.cs" />
     <Compile Include="Controllers\BKStudentsController.cs" />
@@ -286,11 +282,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="React\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910160345473_InitialCreate.resx">
-      <DependentUpon>201910160345473_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

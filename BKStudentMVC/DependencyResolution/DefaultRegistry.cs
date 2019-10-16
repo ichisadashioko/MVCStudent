@@ -22,6 +22,8 @@ namespace BKStudentMVC.DependencyResolution
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
     using StudentLib.Services;
+    using System;
+    using System.Reflection;
 
     public class DefaultRegistry : Registry
     {
@@ -32,13 +34,15 @@ namespace BKStudentMVC.DependencyResolution
             Scan(
                 scan =>
                 {
+                    scan.AssemblyContainingType<IValidationRule>();
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
                     scan.AddAllTypesOf<IValidationRule>();
                     scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
-            For<IRuleDataService>().Use<RuleDataService>();
+            //For<IRuleDataService>().Singleton().Use<RuleDataService>();
+            For<IRuleDataService>().Use<ValidatorDataService>();
             For<IValidationService>().Use<BKValidationService>();
         }
 

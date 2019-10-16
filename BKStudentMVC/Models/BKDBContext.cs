@@ -9,7 +9,7 @@ namespace BKStudentMVC.Models
 {
     public class BKDBContext : DbContext
     {
-        public DbSet<RuleModel> RuleModels { get; set; }
+        public DbSet<ValidatorModel> ValidatorModels { get; set; }
         public DbSet<BKStudent> Students { get; set; }
     }
 }

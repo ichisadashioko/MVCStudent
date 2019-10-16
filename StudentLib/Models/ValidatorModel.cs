@@ -2,11 +2,12 @@
 using System;
 using System.Reflection;
 using System.Text;
+using System.Diagnostics;
 
 namespace StudentLib.Models
 {
 
-    public partial class RuleModel
+    public partial class ValidatorModel
     {
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -14,10 +15,16 @@ namespace StudentLib.Models
         public bool Active { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
-        public virtual bool InEffect { get { return IsInEffect(); } }
+        public virtual bool InEffect
+        {
+            get
+            {
+                return IsInEffect();
+            }
+        }
 
-        public RuleModel() { }
-        public RuleModel(IValidationRule rule)
+        public ValidatorModel() { }
+        public ValidatorModel(IValidationRule rule)
         {
             FullName = rule.GetType().FullName;
             Description = rule.Description;
@@ -63,7 +70,7 @@ namespace StudentLib.Models
                 // Comparing with null of type `DateTime?` always produces `false` (.NET behaviour)
 
                 var now = DateTime.Now;
-                return StartDate > now || EndDate < now;
+                return StartDate > now || EndDate < now || (StartDate == null && EndDate == null);
             }
         }
 
