@@ -39,6 +39,7 @@ namespace BKStudentMVC.DependencyResolution
                     scan.WithDefaultConventions();
                     scan.AddAllTypesOf<IValidationRule>();
                     scan.With(new ControllerConvention());
+                    scan.With(new SingletonConvention<IValidationRule>());
                 });
             //For<IExample>().Use<Example>();
             //For<IRuleDataService>().Singleton().Use<RuleDataService>();

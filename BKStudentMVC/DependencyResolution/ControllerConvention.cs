@@ -40,13 +40,13 @@ namespace BKStudentMVC.DependencyResolution
 
         #endregion
     }
-    internal class SingletonConvention<TPluginFamily> : IRegistrationConvention
+    internal class SingletonConvention<T> : IRegistrationConvention
     {
         public void Process(Type type, Registry registry)
         {
-            if (!type.IsConcrete() || !type.CanBeCreated() || !type.AllInterfaces().Contains(typeof(TPluginFamily))) return;
+            if (!type.IsConcrete() || !type.CanBeCreated() || !type.AllInterfaces().Contains(typeof(T))) return;
 
-            registry.For(typeof(TPluginFamily)).Singleton().Use(type);
+            registry.For(typeof(T)).Singleton().Use(type);
         }
     }
 }

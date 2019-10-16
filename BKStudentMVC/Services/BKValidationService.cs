@@ -6,23 +6,10 @@ using System.Linq;
 using StudentLib.Models;
 using StudentLib.Services;
 using BKStudentMVC.Models;
+using StudentLib.Repository;
 
 namespace BKStudentMVC.Services
 {
-
-    public class ValidatorDataService : IRuleDataService
-    {
-        private readonly BKDBContext _db;
-        public ValidatorDataService()
-        {
-            _db = new BKDBContext();
-        }
-
-        public IEnumerable<ValidatorModel> GetRules()
-        {
-            return _db.ValidatorModels.ToList();
-        }
-    }
     public class BKValidationService : ValidationService
     {
         public BKValidationService(IEnumerable<IValidationRule> validationRules, IRuleDataService validatorDataService) : base(validationRules, validatorDataService) { }

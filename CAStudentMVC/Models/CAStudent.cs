@@ -20,6 +20,9 @@ namespace CAStudentMVC.Models
         [Display(Name = "Was Parent in Service")]
         public bool WasParentInService { get; set; }
 
+        public static readonly float PARENT_IN_SERVICE_BONUS = 0.2f;
+        public static readonly float MOUNTAINOUS_BONUS = 0.2f;
+
         public override float BonusEntryScore
         {
             get
@@ -27,11 +30,11 @@ namespace CAStudentMVC.Models
                 float retval = 0;
                 if (WasParentInService)
                 {
-                    retval += 0.2f;
+                    retval += PARENT_IN_SERVICE_BONUS;
                 }
                 if (Province.IsMountainous())
                 {
-                    retval += 0.2f;
+                    retval += MOUNTAINOUS_BONUS;
                 }
                 return retval;
             }

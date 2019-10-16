@@ -35,10 +35,12 @@ namespace StudentLib.Models
             Type objType = this.GetType();
             PropertyInfo[] propertyInfoList = objType.GetProperties();
             StringBuilder result = new StringBuilder();
+
             foreach (var propertyInfo in propertyInfoList)
             {
                 result.Append($"{propertyInfo.Name}={propertyInfo.GetValue(this)}, ");
             }
+
             return result.ToString();
         }
 
@@ -46,10 +48,6 @@ namespace StudentLib.Models
         {
             get
             {
-                // if `StartDate` is `null` and `EndDate` is `null` then return `true`
-                // if `StartDate` is > `Now` then return `false`
-                // if `StartDate` is `null` but `EndDate` < `Now` then return `false`
-
                 //|       | null  | > Now | < Now |
                 //|-------|-------|-------|-------|
                 //| null  | TRUE  | FALSE | TRUE  |
@@ -67,7 +65,7 @@ namespace StudentLib.Models
                 //| > Now | TRUE  |       |       |
                 //| < Now | FALSE |       |       |
 
-                // Comparing with null of type `DateTime?` always produces `false` (.NET behaviour)
+                // Comparing with null of type `DateTime?` always produces `false` (.NET behavior)
 
                 var now = DateTime.Now;
                 return StartDate > now || EndDate < now || (StartDate == null && EndDate == null);
