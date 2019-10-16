@@ -12,7 +12,7 @@ namespace BKStudentMVC.Controllers
 {
     public class RuleModelsController : Controller
     {
-        private RuleDBEntities db = new RuleDBEntities();
+        private RuleModelDBContext db = new RuleModelDBContext();
 
         // GET: RuleModels
         public ActionResult Index()

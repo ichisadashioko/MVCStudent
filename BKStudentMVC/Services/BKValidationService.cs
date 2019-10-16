@@ -15,10 +15,10 @@ namespace BKStudentMVC.Services
     }
     public class RuleDataService : IRuleDataService
     {
-        private readonly RuleDBEntities _db;
+        private readonly RuleModelDBContext _db;
         public RuleDataService()
         {
-            _db = new RuleDBEntities();
+            _db = new RuleModelDBContext();
         }
 
         public IEnumerable<RuleModel> GetRules()
