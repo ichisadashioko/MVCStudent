@@ -7,13 +7,13 @@ namespace BKStudentMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.3.0")]
-    public sealed partial class ProvinceAndBalance : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProvinceAndBalance));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910080902403_ProvinceAndBalance"; }
+            get { return "201910160345473_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

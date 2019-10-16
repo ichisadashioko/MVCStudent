@@ -27,8 +27,4 @@ namespace BKStudentMVC.Models
             }
         }
     }
-    public class BKStudentDBContext : DbContext
-    {
-        public DbSet<BKStudent> Students { get; set; }
-    }
 }

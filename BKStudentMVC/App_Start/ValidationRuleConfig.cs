@@ -22,7 +22,7 @@ namespace BKStudentMVC
                 .SelectMany(x => x.GetTypes())
                 .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
-            var db = new RuleModelDBContext();
+            var db = new BKDBContext();
             foreach (var type in ruleTypes)
             {
                 var rule = Activator.CreateInstance(type) as IValidationRule;

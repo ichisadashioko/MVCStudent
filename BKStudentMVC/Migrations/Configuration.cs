@@ -1,20 +1,21 @@
-namespace BKStudentMVC.Migrations
+﻿namespace BKStudentMVC.Migrations
 {
-    using BKStudentMVC.Models;
-    using StudentLib.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using BKStudentMVC.Models;
+    using StudentLib.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BKStudentMVC.Models.BKStudentDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BKStudentMVC.Models.BKDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "BKStudentMVC.Models.BKDBContext";
         }
 
-        protected override void Seed(BKStudentMVC.Models.BKStudentDBContext context)
+        protected override void Seed(BKStudentMVC.Models.BKDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

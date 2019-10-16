@@ -27,10 +27,10 @@ namespace BKStudentMVC.Controllers
     public class HomeController : Controller
     {
         private const int RULES_PER_PAGE = 3;
-        private readonly RuleModelDBContext ruleDB;
+        private readonly BKDBContext ruleDB;
         public HomeController()
         {
-            ruleDB = new RuleModelDBContext();
+            ruleDB = new BKDBContext();
         }
         public ActionResult Index()
         {

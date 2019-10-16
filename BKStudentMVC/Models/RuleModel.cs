@@ -75,8 +75,4 @@ namespace BKStudentMVC.Models
             return Active && DuringActiveTime;
         }
     }
-    public class RuleModelDBContext : DbContext
-    {
-        public DbSet<RuleModel> RuleModels { get; set; }
-    }
 }

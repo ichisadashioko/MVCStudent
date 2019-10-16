@@ -145,6 +145,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\ValidationRuleConfig.cs" />
+    <Compile Include="Migrations\201910160345473_InitialCreate.cs" />
+    <Compile Include="Migrations\201910160345473_InitialCreate.designer.cs">
+      <DependentUpon>201910160345473_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BKDBContext.cs" />
     <Compile Include="Controllers\BKStudentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RuleModelsController.cs" />
@@ -157,11 +163,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910080902403_ProvinceAndBalance.cs" />
-    <Compile Include="Migrations\201910080902403_ProvinceAndBalance.designer.cs">
-      <DependentUpon>201910080902403_ProvinceAndBalance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BKStudent.cs" />
     <Compile Include="Models\RuleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -273,11 +274,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910080902403_ProvinceAndBalance.resx">
-      <DependentUpon>201910080902403_ProvinceAndBalance.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +287,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="React\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910160345473_InitialCreate.resx">
+      <DependentUpon>201910160345473_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

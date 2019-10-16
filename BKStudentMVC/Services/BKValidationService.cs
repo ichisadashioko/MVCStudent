@@ -15,10 +15,10 @@ namespace BKStudentMVC.Services
     }
     public class RuleDataService : IRuleDataService
     {
-        private readonly RuleModelDBContext _db;
+        private readonly BKDBContext _db;
         public RuleDataService()
         {
-            _db = new RuleModelDBContext();
+            _db = new BKDBContext();
         }
 
         public IEnumerable<RuleModel> GetRules()
@@ -28,17 +28,18 @@ namespace BKStudentMVC.Services
     }
     public class BKValidationService : ValidationService
     {
-        private readonly IRuleDataService _dataService;
-        public BKValidationService(IRuleDataService dataService) : base()
-        {
-            _dataService = dataService;
-        }
+        private IRuleDataService _dataService;
         protected override IEnumerable<Type> GetIgnoredRules()
         {
             return new List<Type>()
             {
                 typeof(GenderValidationRule),
             };
+        }
+
+        protected void InitializeDataService()
+        {
+            _dataService = new RuleDataService();
         }
 
 
@@ -49,6 +50,7 @@ namespace BKStudentMVC.Services
             // Check whether the `Type` is active or not
             // If yes then add the `Type` instance to return
 
+            if (_dataService == null) { InitializeDataService(); }
             var ruleModels = _dataService.GetRules();
 
             // Make DI container get `types`
