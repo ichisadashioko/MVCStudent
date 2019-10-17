@@ -162,7 +162,6 @@
     <Compile Include="Models\BKStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BKBalanceValidationRule.cs" />
-    <Compile Include="Services\BKValidationService.cs" />
     <Compile Include="Services\EntryScoreValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
