@@ -15,7 +15,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace BKStudentMVC.DependencyResolution {
+namespace BKStudentMVC.DependencyResolution
+{
     using System;
     using System.Web.Mvc;
 
@@ -23,16 +24,29 @@ namespace BKStudentMVC.DependencyResolution {
     using StructureMap.Graph;
     using StructureMap.Pipeline;
     using StructureMap.TypeRules;
+    using System.Linq;
 
-    public class ControllerConvention : IRegistrationConvention {
+    public class ControllerConvention : IRegistrationConvention
+    {
         #region Public Methods and Operators
 
-        public void Process(Type type, Registry registry) {
-            if (type.CanBeCastTo<Controller>() && !type.IsAbstract) {
+        public void Process(Type type, Registry registry)
+        {
+            if (type.CanBeCastTo<Controller>() && !type.IsAbstract)
+            {
                 registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
             }
         }
 
         #endregion
+    }
+    internal class SingletonConvention<T> : IRegistrationConvention
+    {
+        public void Process(Type type, Registry registry)
+        {
+            if (!type.IsConcrete() || !type.CanBeCreated() || !type.AllInterfaces().Contains(typeof(T))) return;
+
+            registry.For(typeof(T)).Singleton().Use(type);
+        }
     }
 }

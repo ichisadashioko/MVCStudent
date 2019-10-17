@@ -7,17 +7,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BKStudentMVC.Models;
+using StudentLib.Models;
 
 namespace BKStudentMVC.Controllers
 {
     public class RuleModelsController : Controller
     {
-        private RuleDBEntities db = new RuleDBEntities();
+        private BKDBContext db = new BKDBContext();
 
         // GET: RuleModels
         public ActionResult Index()
         {
-            return View(db.RuleModels.ToList());
+            return View(db.ValidatorModels.ToList());
         }
 
         // GET: RuleModels/Details/5
@@ -27,7 +28,7 @@ namespace BKStudentMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RuleModel ruleModel = db.RuleModels.Find(id);
+            ValidatorModel ruleModel = db.ValidatorModels.Find(id);
             if (ruleModel == null)
             {
                 return HttpNotFound();
@@ -46,11 +47,11 @@ namespace BKStudentMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FullName,Description,Active,StartDate,EndDate")] RuleModel ruleModel)
+        public ActionResult Create([Bind(Include = "Id,FullName,Description,Active,StartDate,EndDate")] ValidatorModel ruleModel)
         {
             if (ModelState.IsValid)
             {
-                db.RuleModels.Add(ruleModel);
+                db.ValidatorModels.Add(ruleModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,7 @@ namespace BKStudentMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RuleModel ruleModel = db.RuleModels.Find(id);
+            ValidatorModel ruleModel = db.ValidatorModels.Find(id);
             if (ruleModel == null)
             {
                 return HttpNotFound();
@@ -78,7 +79,7 @@ namespace BKStudentMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FullName,Description,Active,StartDate,EndDate")] RuleModel ruleModel)
+        public ActionResult Edit([Bind(Include = "Id,FullName,Description,Active,StartDate,EndDate")] ValidatorModel ruleModel)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +97,7 @@ namespace BKStudentMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RuleModel ruleModel = db.RuleModels.Find(id);
+            ValidatorModel ruleModel = db.ValidatorModels.Find(id);
             if (ruleModel == null)
             {
                 return HttpNotFound();
@@ -109,8 +110,8 @@ namespace BKStudentMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RuleModel ruleModel = db.RuleModels.Find(id);
-            db.RuleModels.Remove(ruleModel);
+            ValidatorModel ruleModel = db.ValidatorModels.Find(id);
+            db.ValidatorModels.Remove(ruleModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

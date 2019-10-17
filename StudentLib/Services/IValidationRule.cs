@@ -13,7 +13,7 @@ namespace StudentLib.Services
         int Order { get; }
         string Description { get; }
         bool Validate(Student student);
-    }
+    }  
 
     public class GenderValidationRule : IValidationRule
     {

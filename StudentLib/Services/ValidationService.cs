@@ -11,68 +11,57 @@ namespace StudentLib.Services
 {
     public class ValidationService : IValidationService
     {
-        private readonly IEnumerable<IValidationRule> _validators;
-        private IEnumerable<Type> _ignoredRules;
+        /// <summary>
+        /// All `IValidationRule` after being filtered.
+        /// </summary>
+        private readonly IEnumerable<IValidationRule> _validationRules;
+        /// <summary>
+        /// 
+        /// </summary>
+        protected readonly IRuleDataService _validatorDataService;
 
-        public ValidationService()
+        public ValidationService(IEnumerable<IValidationRule> validationRules, IRuleDataService validatorDataService)
         {
-            _ignoredRules = GetIgnoredRules();
-            _validators = GetBusinessRules();
+            _validatorDataService = validatorDataService;
+            _validationRules = GetEnabledValidators(validationRules);
+
+            Debug.WriteLine($"[{this.GetType().FullName}] _validationRules.Count: {_validationRules.Count()}");
         }
 
-        protected virtual IEnumerable<IValidationRule> GetBusinessRules()
+        private IEnumerable<IValidationRule> GetEnabledValidators(IEnumerable<IValidationRule> validationRules)
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IValidationRule)
-                .IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
+            Debug.WriteLine($"[{this.GetType().FullName}.GetEnabledValidators] validationRules.Count: {validationRules.Count()}");
 
-            if (_ignoredRules != null && _ignoredRules.Any())
-            {
-                Debug.WriteLine("Removing rules...");
-                Debug.WriteLine($"Before removing: {types.Count()}");
-                types = types.Except(_ignoredRules);
-                Debug.WriteLine($"After removed: {types.Count()}");
-            }
+            IEnumerable<ValidatorModel> validators = _validatorDataService.GetRules().Where(x => x.InEffect);
 
-            var validators = new List<IValidationRule>();
-            foreach (var type in types)
-            {
-                var rule = Activator.CreateInstance(type) as IValidationRule;
-                validators.Add(rule);
-            }
-            validators.OrderBy(x => x.Order);
-            return validators;
+            Debug.WriteLine(validators.Count());
+
+            var retval = validationRules.Where(r => validators.Any(v => (v.FullName.Trim().Equals(r.GetType().FullName))));
+            retval = retval.OrderBy(x => x.Order);
+
+            return retval;
         }
 
         public virtual bool ValidateStudent(Student student)
         {
-            Debug.WriteLine(student.GetType().FullName);
-            //Debug.WriteLine($"_validators.Count(): {_validators.Count()}");
-            if (_validators == null || !_validators.Any())
+            Debug.WriteLine($"[{this.GetType().FullName}.ValidateStudent] Start to validate {student.GetType().FullName}");
+
+            if (_validationRules == null || !_validationRules.Any())
             {
                 return true;
             }
 
-            foreach (var validator in _validators)
+            foreach (var validationRule in _validationRules)
             {
-                Debug.WriteLine($"Using {validator.GetType().FullName} to validate");
-                if (!validator.Validate(student))
+                Debug.WriteLine($"[{this.GetType().FullName}.ValidateStudent] Using {validationRule.GetType().FullName} to validate");
+
+                if (!validationRule.Validate(student))
                 {
-                    Debug.WriteLine($"Failed validation at {validator.GetType().FullName}");
+                    Debug.WriteLine($"[{this.GetType().FullName}.ValidateStudent] Failed validation at {validationRule.GetType().FullName}");
                     return false;
                 }
             }
             return true;
-        }
-        protected virtual bool IsGenderAllowed(Student student)
-        {
-            return student.Gender == Gender.Male;
-        }
-
-        protected virtual IEnumerable<Type> GetIgnoredRules()
-        {
-            return null;
         }
     }
 }

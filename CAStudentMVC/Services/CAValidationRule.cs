@@ -20,6 +20,7 @@ namespace CAStudentMVC.Services
                 CAStudent caStudent = (CAStudent)student;
                 return ValidateStudent(caStudent);
             }
+
             return false;
         }
 

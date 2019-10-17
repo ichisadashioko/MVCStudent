@@ -47,7 +47,7 @@ namespace StudentLib.Models
         [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = false)]
         public virtual decimal BankBalance { get; set; }
 
-        public virtual float BonusEntryScore
+    public virtual float BonusEntryScore
         {
             get { return 0; }
         }
@@ -57,10 +57,12 @@ namespace StudentLib.Models
             Type objType = this.GetType();
             PropertyInfo[] propertyInfoList = objType.GetProperties();
             StringBuilder result = new StringBuilder();
+
             foreach (var propertyInfo in propertyInfoList)
             {
                 result.Append($"{propertyInfo.Name}={propertyInfo.GetValue(this)}, ");
             }
+
             return result.ToString();
         }
     }

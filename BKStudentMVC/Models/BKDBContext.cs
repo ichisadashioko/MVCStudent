@@ -6,10 +6,10 @@ using System.Data.Entity;
 using StudentLib.Models;
 using StudentLib.Repository;
 
-namespace CAStudentMVC.Models
+namespace BKStudentMVC.Models
 {
-    public class CAStudentDBContext : StudentDBContext
+    public class BKDBContext : StudentDBContext
     {
-        public DbSet<CAStudent> CAStudents { get; set; }
+        public DbSet<BKStudent> Students { get; set; }
     }
 }

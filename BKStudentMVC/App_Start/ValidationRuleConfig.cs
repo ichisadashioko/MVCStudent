@@ -4,6 +4,7 @@
 namespace BKStudentMVC
 {
     using BKStudentMVC.Models;
+    using StudentLib.Models;
     using StudentLib.Services;
     using System;
     using System.Collections.Generic;
@@ -22,22 +23,20 @@ namespace BKStudentMVC
                 .SelectMany(x => x.GetTypes())
                 .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
-            var db = new RuleDBEntities();
+            var db = new BKDBContext();
             foreach (var type in ruleTypes)
             {
                 var rule = Activator.CreateInstance(type) as IValidationRule;
 
-                var ruleModel = new RuleModel(rule);
+                var ruleModel = new ValidatorModel(rule);
                 //Debug.WriteLine($"[ValidationRuleConfig.Start] Found {ruleModel}");
 
-                RuleModel _ruleModel = db.RuleModels.SingleOrDefault(x => x.FullName == ruleModel.FullName);
+                ValidatorModel _ruleModel = db.ValidatorModels.SingleOrDefault(x => x.FullName == ruleModel.FullName);
                 if (_ruleModel == null)
                 {
                     Debug.WriteLine($"[ValidationRuleConfig.Start] Adding {ruleModel}");
-                    //db.RuleModels.Add(ruleModel);
-                    //db.Database.ExecuteSqlCommand($"INSERT INTO RuleModels(FullName, Description, Active, StartDate, EndDate) VALUES ({ruleModel.FullName}, {ruleModel.Description}, {ruleModel.Active}, {ruleModel.StartDate}, {ruleModel.EndDate})");
-                    db.Database.ExecuteSqlCommand("INSERT INTO RuleModels(FullName, Description, Active, StartDate, EndDate) VALUES ({0}, {1}, {2}, {3}, {4})", ruleModel.FullName, ruleModel.Description, ruleModel.Active, ruleModel.StartDate, ruleModel.EndDate);
-                    //SqlCommand cmd = new SqlCommand()
+                    db.ValidatorModels.Add(ruleModel);
+
                     db.SaveChanges();
                 }
             }

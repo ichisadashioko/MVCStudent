@@ -13,7 +13,7 @@ namespace BKStudentMVC.Controllers
 {
     public class BKStudentsController : Controller
     {
-        private BKStudentDBContext db = new BKStudentDBContext();
+        private BKDBContext db = new BKDBContext();
         private readonly IValidationService _validationService;
         public BKStudentsController(IValidationService validationService)
         {

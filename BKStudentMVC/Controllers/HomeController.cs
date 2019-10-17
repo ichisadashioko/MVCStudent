@@ -10,13 +10,13 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text;
-
+using StudentLib.Models;
 
 namespace BKStudentMVC.ViewModels
 {
     public class RuleViewModel
     {
-        public IEnumerable<RuleModel> Rules { get; set; }
+        public IEnumerable<StudentLib.Models.ValidatorModel> Rules { get; set; }
         public int RulesPerPage { get; set; }
         public int Page { get; set; }
     }
@@ -27,10 +27,10 @@ namespace BKStudentMVC.Controllers
     public class HomeController : Controller
     {
         private const int RULES_PER_PAGE = 3;
-        private readonly RuleDBEntities ruleDB;
+        private readonly BKDBContext ruleDB;
         public HomeController()
         {
-            ruleDB = new RuleDBEntities();
+            ruleDB = new BKDBContext();
         }
         public ActionResult Index()
         {
@@ -40,8 +40,8 @@ namespace BKStudentMVC.Controllers
         public ActionResult Rules(int page)
         {
             Response.Cache.SetOmitVaryStar(true);
-            var rules = ruleDB.RuleModels.OrderBy(x => x.FullName).Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE).ToList();
-            var hasMore = page * RULES_PER_PAGE < ruleDB.RuleModels.Count();
+            var rules = ruleDB.ValidatorModels.OrderBy(x => x.FullName).Skip((page - 1) * RULES_PER_PAGE).Take(RULES_PER_PAGE).ToList();
+            var hasMore = page * RULES_PER_PAGE < ruleDB.ValidatorModels.Count();
 
             if (ControllerContext.HttpContext.Request.ContentType == "application/json")
             {
@@ -55,7 +55,7 @@ namespace BKStudentMVC.Controllers
             {
                 return View(new RuleViewModel
                 {
-                    Rules = ruleDB.RuleModels.Take(RULES_PER_PAGE * page),
+                    Rules = ruleDB.ValidatorModels.Take(RULES_PER_PAGE * page),
                     RulesPerPage = RULES_PER_PAGE,
                     Page = page,
                 });
