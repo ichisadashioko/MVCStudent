@@ -31,3 +31,6 @@ git clone https://github.com/ichisadashioko/MVCStudent --branch master --single-
         # (Optional) Restore `Configuration.cs` content to populate database
         Update-Database
         ```
+
+- `SqlException: Directory lookup for the file ...`
+    - Manually crete the `App_Data` folder.
