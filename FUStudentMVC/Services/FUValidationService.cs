@@ -14,13 +14,5 @@ namespace FUStudentMVC.Services
 
         public FUValidationService(IEnumerable<IValidationRule> validationRules, IRuleDataService validatorDataService) : base(validationRules, validatorDataService) { }
 
-        protected override IEnumerable<Type> GetIgnoredRules()
-        {
-            return new List<Type>()
-            {
-                typeof(GenderValidationRule),
-                typeof(NameValidationRule),
-            };
-        }
     }
 }

@@ -15,24 +15,32 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace FUStudentMVC.DependencyResolution {
+namespace FUStudentMVC.DependencyResolution
+{
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
     using StudentLib.Services;
     using FUStudentMVC.Services;
+    using StudentLib.Repository;
+    using FUStudentMVC.Models;
 
-    public class DefaultRegistry : Registry {
+    public class DefaultRegistry : Registry
+    {
         #region Constructors and Destructors
 
-        public DefaultRegistry() {
+        public DefaultRegistry()
+        {
             Scan(
-                scan => {
+                scan =>
+                {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
                     scan.AddAllTypesOf<IValidationRule>();
+                    scan.AssemblyContainingType<IValidationRule>();
                     scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
+            For<IRuleDataService>().Use<FURuleDataService>();
             For<IValidationService>().Use<FUValidationService>();
         }
 

@@ -17,10 +17,12 @@
 
 namespace BKStudentMVC.DependencyResolution
 {
+    using BKStudentMVC.Models;
     using BKStudentMVC.Services;
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
+    using StudentLib.Repository;
     using StudentLib.Services;
     using System;
     using System.Reflection;
@@ -43,8 +45,9 @@ namespace BKStudentMVC.DependencyResolution
                 });
             //For<IExample>().Use<Example>();
             //For<IRuleDataService>().Singleton().Use<RuleDataService>();
+            For<StudentDBContext>().Use<BKDBContext>();
             For<IRuleDataService>().Use<ValidatorDataService>();
-            For<IValidationService>().Use<BKValidationService>();
+            For<IValidationService>().Use<ValidationService>();
         }
 
         #endregion
