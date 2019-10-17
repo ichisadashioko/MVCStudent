@@ -149,6 +149,7 @@
     <Compile Include="Services\EntryScoreValidationRule.cs" />
     <Compile Include="Services\ForeignNameValidationRule.cs" />
     <Compile Include="Services\FUValidationService.cs" />
+    <Compile Include="Services\FURuleDataService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

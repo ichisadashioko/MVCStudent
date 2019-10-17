@@ -40,8 +40,7 @@ namespace FUStudentMVC.DependencyResolution
                     scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
-            For<StudentDBContext>().Use<FUDBContext>();
-            For<IRuleDataService>().Use<ValidatorDataService>();
+            For<IRuleDataService>().Use<FURuleDataService>();
             For<IValidationService>().Use<FUValidationService>();
         }
 

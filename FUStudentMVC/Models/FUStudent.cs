@@ -13,7 +13,7 @@ namespace FUStudentMVC.Models
     {
         public int Credits { get; set; }
     }
-    public class FUDBContext : StudentDBContext
+    public class FUDBContext : DbContext
     {
         public DbSet<FUStudent> Students { get; set; }
     }

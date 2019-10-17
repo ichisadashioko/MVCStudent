@@ -12,6 +12,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(FUStudentMVC.Models.FUDBContext context)
@@ -30,8 +31,8 @@
                     EntryScore = 6.7f,
                     HasCriminalRecord = true,
                     Credits = 20,
-                    Province=Province.QuangNinh,
-                    BankBalance=10000m,
+                    Province = Province.QuangNinh,
+                    BankBalance = 10000m,
                 },
                 new FUStudent
                 {
@@ -42,8 +43,8 @@
                     EntryScore = 7.4f,
                     HasCriminalRecord = false,
                     Credits = 46,
-                    Province=Province.Foreign,
-                    BankBalance=10000m,
+                    Province = Province.Foreign,
+                    BankBalance = 10000m,
                 },
                 new FUStudent
                 {
@@ -54,8 +55,8 @@
                     EntryScore = 6.2f,
                     HasCriminalRecord = true,
                     Credits = 30,
-                    Province=Province.AnGiang,
-                    BankBalance=10000m,
+                    Province = Province.AnGiang,
+                    BankBalance = 10000m,
                 },
                 new FUStudent
                 {
@@ -66,8 +67,8 @@
                     EntryScore = 9.7f,
                     HasCriminalRecord = false,
                     Credits = 69,
-                    Province=Province.HaNam,
-                    BankBalance=10000m,
+                    Province = Province.HaNam,
+                    BankBalance = 10000m,
                 },
                 new FUStudent
                 {
@@ -78,8 +79,8 @@
                     EntryScore = 8.7f,
                     HasCriminalRecord = true,
                     Credits = 51,
-                    Province=Province.Foreign,
-                    BankBalance=10000m,
+                    Province = Province.Foreign,
+                    BankBalance = 10000m,
                 }
             );
         }
