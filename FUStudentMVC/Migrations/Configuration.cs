@@ -1,20 +1,20 @@
 ﻿namespace FUStudentMVC.Migrations
 {
-    using FUStudentMVC.Models;
-    using StudentLib.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using FUStudentMVC.Models;
+    using StudentLib.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FUStudentMVC.Models.FUStudentDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<FUStudentMVC.Models.FUDBContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(FUStudentMVC.Models.FUStudentDBContext context)
+        protected override void Seed(FUStudentMVC.Models.FUDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -142,18 +142,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910040706141_Initial.cs" />
-    <Compile Include="Migrations\201910040706141_Initial.designer.cs">
-      <DependentUpon>201910040706141_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910040904353_NetFramework.cs" />
-    <Compile Include="Migrations\201910040904353_NetFramework.designer.cs">
-      <DependentUpon>201910040904353_NetFramework.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910080905344_ProvinceAndBalance.cs" />
-    <Compile Include="Migrations\201910080905344_ProvinceAndBalance.designer.cs">
-      <DependentUpon>201910080905344_ProvinceAndBalance.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FUStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,17 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910040706141_Initial.resx">
-      <DependentUpon>201910040706141_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910040904353_NetFramework.resx">
-      <DependentUpon>201910040904353_NetFramework.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910080905344_ProvinceAndBalance.resx">
-      <DependentUpon>201910080905344_ProvinceAndBalance.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudentLib\StudentLib.csproj">

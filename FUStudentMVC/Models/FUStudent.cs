@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using StudentLib.Repository;
 
 namespace FUStudentMVC.Models
 {
@@ -12,7 +13,7 @@ namespace FUStudentMVC.Models
     {
         public int Credits { get; set; }
     }
-    public class FUStudentDBContext : DbContext
+    public class FUDBContext : StudentDBContext
     {
         public DbSet<FUStudent> Students { get; set; }
     }

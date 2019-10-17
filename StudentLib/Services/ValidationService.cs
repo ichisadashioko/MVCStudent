@@ -34,10 +34,22 @@ namespace StudentLib.Services
 
         private IEnumerable<IValidationRule> GetEnabledValidators(IEnumerable<IValidationRule> validationRules)
         {
+            IEnumerable<IValidationRule> retval = null;
             Debug.WriteLine($"[{this.GetType().FullName}.GetEnabledValidators] validationRules.Count: {validationRules.Count()}");
-            IEnumerable<ValidatorModel> validators = _validatorDataService.GetRules().Where(x => x.InEffect);
+            if (_validatorDataService != null)
+            {
+                IEnumerable<ValidatorModel> validators = _validatorDataService.GetRules().Where(x => x.InEffect);
 
-            var retval = validationRules.Where(r => validators.Any(v => (v.FullName.Trim().Equals(r.GetType().FullName))));
+                retval = validationRules.Where(r => validators.Any(v => (v.FullName.Trim().Equals(r.GetType().FullName))));
+            }
+            else if (_ignoredRules != null && _ignoredRules.Any())
+            {
+                retval = validationRules.Where(x => !_ignoredRules.Any(t => t.Equals(x.GetType())));
+            }
+            else
+            {
+                retval = validationRules;
+            }
             retval = retval.OrderBy(x => x.Order);
             return retval;
         }

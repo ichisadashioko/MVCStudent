@@ -13,7 +13,7 @@ namespace FUStudentMVC.Controllers
 {
     public class FUStudentsController : Controller
     {
-        private FUStudentDBContext db = new FUStudentDBContext();
+        private FUDBContext db = new FUDBContext();
         private readonly IValidationService _validationService;
         public FUStudentsController(IValidationService validationService)
         {
