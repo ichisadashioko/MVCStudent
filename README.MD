@@ -33,4 +33,4 @@ git clone https://github.com/ichisadashioko/MVCStudent --branch master --single-
         ```
 
 - `SqlException: Directory lookup for the file ...`
-    - Manually crete the `App_Data` folder.
+    - Manually create the `App_Data` folder.
