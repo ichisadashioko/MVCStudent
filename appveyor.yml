@@ -1,0 +1,17 @@
+image: Visual Studio 2017
+branches:
+  only:
+    - master
+    - develop
+clone_depth: 1
+before_build:
+  - nuget restore
+build:
+  project: StudentMVC2.sln
+  verbosity: normal
+test:
+  assemblies:
+    only: 
+      - BKStudentMVC.Tests.dll
+      - FUStudentMVC.Tests.dll
+      - CAStudentMVC.Tests.dll
