@@ -7,3 +7,5 @@ clone_depth: 1
 build:
   project: StudentMVC2.sln
   verbosity: detailed
+before_build:
+  - cmd: msbuild -t:restore
