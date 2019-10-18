@@ -17,10 +17,4 @@ namespace CAStudentMVC.Services
             return !student.HasCriminalRecord;
         }
     }
-    public class CAValidationService : ValidationService
-    {
-
-        public CAValidationService(IEnumerable<IValidationRule> validationRules, IRuleDataService validatorDataService) : base(validationRules, validatorDataService) { }
-
-    }
 }

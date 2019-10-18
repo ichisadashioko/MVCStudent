@@ -8,8 +8,8 @@ using StudentLib.Repository;
 
 namespace CAStudentMVC.Models
 {
-    public class CAStudentDBContext : StudentDBContext
+    public class CADBContext : StudentDBContext
     {
-        public DbSet<CAStudent> CAStudents { get; set; }
+        public DbSet<CAStudent> Students { get; set; }
     }
 }
