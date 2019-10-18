@@ -8,4 +8,4 @@ build:
   project: StudentMVC2.sln
   verbosity: detailed
 before_build:
-  - cmd: msbuild -t:restore
+  - cmd: nuget restore tudentMVC2.sln
