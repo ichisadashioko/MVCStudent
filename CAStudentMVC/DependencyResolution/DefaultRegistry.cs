@@ -20,6 +20,8 @@ namespace CAStudentMVC.DependencyResolution {
     using StructureMap.Graph;
     using StudentLib.Services;
     using CAStudentMVC.Services;
+    using StudentLib.Repository;
+    using CAStudentMVC.Models;
 	
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
@@ -33,6 +35,7 @@ namespace CAStudentMVC.DependencyResolution {
 					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
+            For<StudentDBContext>().Use<CADBContext>();
             For<IValidationService>().Use<ValidationService>();
             For<IRuleDataService>().Use<ValidatorDataService>();
         }

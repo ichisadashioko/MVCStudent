@@ -142,22 +142,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910070125121_Initial.cs" />
-    <Compile Include="Migrations\201910070125121_Initial.designer.cs">
-      <DependentUpon>201910070125121_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910080900326_ProvinceAndBalance.cs" />
-    <Compile Include="Migrations\201910080900326_ProvinceAndBalance.designer.cs">
-      <DependentUpon>201910080900326_ProvinceAndBalance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910090303197_CAStudentHeight.cs" />
-    <Compile Include="Migrations\201910090303197_CAStudentHeight.designer.cs">
-      <DependentUpon>201910090303197_CAStudentHeight.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910090316423_ParentInService.cs" />
-    <Compile Include="Migrations\201910090316423_ParentInService.designer.cs">
-      <DependentUpon>201910090316423_ParentInService.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CADBContext.cs" />
     <Compile Include="Models\CAStudent.cs" />
@@ -226,20 +210,6 @@
       <Project>{b69086e4-f2db-43b8-a404-f542206a3d1a}</Project>
       <Name>StudentLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910070125121_Initial.resx">
-      <DependentUpon>201910070125121_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910080900326_ProvinceAndBalance.resx">
-      <DependentUpon>201910080900326_ProvinceAndBalance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910090303197_CAStudentHeight.resx">
-      <DependentUpon>201910090303197_CAStudentHeight.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910090316423_ParentInService.resx">
-      <DependentUpon>201910090316423_ParentInService.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
