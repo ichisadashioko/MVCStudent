@@ -5,7 +5,13 @@ branches:
     - develop
 clone_depth: 1
 before_build:
-  - cmd: nuget restore StudentMVC2.sln
+  - nuget restore
 build:
   project: StudentMVC2.sln
-  verbosity: detailed
+  verbosity: normal
+test:
+  assemblies:
+    only: 
+      - BKStudentMVC.Tests.dll
+      - FUStudentMVC.Tests.dll
+      - CAStudentMVC.Tests.dll
