@@ -7,20 +7,20 @@
     using StudentLib.Models;
     using CAStudentMVC.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CAStudentMVC.Models.CAStudentDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CAStudentMVC.Models.CADBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(CAStudentMVC.Models.CAStudentDBContext context)
+        protected override void Seed(CAStudentMVC.Models.CADBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-            context.CAStudents.AddOrUpdate(
+            context.Students.AddOrUpdate(
                 new CAStudent
                 {
                     FirstName = "Kennith",

@@ -159,8 +159,8 @@
       <DependentUpon>201910090316423_ParentInService.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CADBContext.cs" />
     <Compile Include="Models\CAStudent.cs" />
-    <Compile Include="Models\CAStudentDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BalanceValidationRule.cs" />
     <Compile Include="Services\CAValidationRule.cs" />

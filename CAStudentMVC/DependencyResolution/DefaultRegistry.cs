@@ -33,7 +33,8 @@ namespace CAStudentMVC.DependencyResolution {
 					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
-            For<IValidationService>().Use<CAValidationService>();
+            For<IValidationService>().Use<ValidationService>();
+            For<IRuleDataService>().Use<ValidatorDataService>();
         }
 
         #endregion

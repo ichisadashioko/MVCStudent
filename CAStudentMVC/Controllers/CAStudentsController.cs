@@ -13,7 +13,7 @@ namespace CAStudentMVC.Controllers
 {
     public class CAStudentsController : Controller
     {
-        private CAStudentDBContext db = new CAStudentDBContext();
+        private CADBContext db = new CADBContext();
         private readonly IValidationService _validationService;
         public CAStudentsController(IValidationService validationService)
         {
@@ -23,7 +23,7 @@ namespace CAStudentMVC.Controllers
         // GET: CAStudents
         public ActionResult Index()
         {
-            return View(db.CAStudents.ToList());
+            return View(db.Students.ToList());
         }
 
         // GET: CAStudents/Details/5
@@ -33,7 +33,7 @@ namespace CAStudentMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CAStudent cAStudent = db.CAStudents.Find(id);
+            CAStudent cAStudent = db.Students.Find(id);
             if (cAStudent == null)
             {
                 return HttpNotFound();
@@ -56,7 +56,7 @@ namespace CAStudentMVC.Controllers
         {
             if (ModelState.IsValid && _validationService.ValidateStudent(cAStudent))
             {
-                db.CAStudents.Add(cAStudent);
+                db.Students.Add(cAStudent);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace CAStudentMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CAStudent cAStudent = db.CAStudents.Find(id);
+            CAStudent cAStudent = db.Students.Find(id);
             if (cAStudent == null)
             {
                 return HttpNotFound();
@@ -102,7 +102,7 @@ namespace CAStudentMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CAStudent cAStudent = db.CAStudents.Find(id);
+            CAStudent cAStudent = db.Students.Find(id);
             if (cAStudent == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace CAStudentMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CAStudent cAStudent = db.CAStudents.Find(id);
-            db.CAStudents.Remove(cAStudent);
+            CAStudent cAStudent = db.Students.Find(id);
+            db.Students.Remove(cAStudent);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
