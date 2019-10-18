@@ -1,6 +1,6 @@
-﻿namespace BKStudentMVC
+﻿namespace CAStudentMVC
 {
-    using BKStudentMVC.Models;
+    using CAStudentMVC.Models;
     using StudentLib.Models;
     using StudentLib.Services;
     using System;
@@ -20,7 +20,7 @@
                 .SelectMany(x => x.GetTypes())
                 .Where(x => typeof(IValidationRule).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract);
 
-            var db = new BKDBContext();
+            var db = new CADBContext();
             foreach (var type in ruleTypes)
             {
                 var rule = Activator.CreateInstance(type) as IValidationRule;
